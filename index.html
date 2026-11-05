@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#070b24">
 <link rel="icon" href="img/logo.png">
+<link rel="alternate" hreflang="ru" href="https://www.tacpress.uz/?lang=ru">
+<link rel="alternate" hreflang="uz" href="https://www.tacpress.uz/?lang=uz">
+<link rel="alternate" hreflang="en" href="https://www.tacpress.uz/?lang=en">
 <title>TAC Press</title>
 <meta name="description" content="TAC Press (Turbo Air Compressor) — производство промышленных ёмкостей в Узбекистане: ёмкости для пропана, расширительные баки, буферные ёмкости и воздушные ресиверы.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -118,8 +121,17 @@ section{padding-block:clamp(64px,9vw,120px)}
 .btn--glass{background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.05));-webkit-backdrop-filter:blur(18px) saturate(180%);backdrop-filter:blur(18px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),inset 0 0 0 1px rgba(255,255,255,.12),0 10px 30px -14px rgba(0,0,0,.6)}
 .btn svg{width:18px;height:18px;flex:none}
 .nav .btn{padding:11px 18px;font-size:14px}
-@media (max-width:900px){.links{display:none}.nav .btn{margin-left:auto}}
+@media (max-width:900px){.links{display:none}}
 @media (max-width:420px){.nav .btn span{display:none}.nav .btn{padding:11px 13px}}
+
+
+/* language switcher */
+.lang{display:flex;gap:2px;padding:4px;border-radius:999px;background:rgba(4,8,30,.4);box-shadow:inset 0 0 0 1px var(--line);flex:none}
+.lang button{font:inherit;font-family:var(--font-data);font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--fg-2);background:transparent;border:0;cursor:pointer;padding:7px 10px;border-radius:999px;transition:color .2s,background .2s}
+.lang button:hover{color:var(--fg)}
+.lang button[aria-pressed="true"]{color:#1a1330;background:linear-gradient(180deg,#fff0c4 0%,var(--gold) 60%,#c39446 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.8)}
+@media (max-width:900px){.lang{margin-left:auto}}
+@media (max-width:480px){.brand small{display:none}.brand b{font-size:15px}.lang button{padding:7px 8px;font-size:11px}.nav .bar{gap:10px}}
 
 /* ---------- hero ---------- */
 .hero{padding-block:clamp(40px,7vw,90px) clamp(56px,8vw,100px)}
@@ -333,11 +345,14 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
         <span><b class="gold-text">TAC PRESS</b><small>TURBO AIR COMPRESSOR</small></span>
       </a>
       <div class="links">
-        <a href="#products">Продукция</a>
-        <a href="#prices">Цены</a>
-        <a href="#why">Почему мы</a>
-        <a href="#quote">Запрос цены</a>
-        <a href="#contacts">Контакты</a>
+        <a data-i18n="nav.products" href="#products">Продукция</a>
+        <a data-i18n="nav.prices" href="#prices">Цены</a>
+        <a data-i18n="nav.why" href="#why">Почему мы</a>
+        <a data-i18n="nav.quote" href="#quote">Запрос цены</a>
+        <a data-i18n="nav.contacts" href="#contacts">Контакты</a>
+      </div>
+      <div class="lang" role="group" aria-label="Til / Язык / Language">
+        <button type="button" data-lang="uz" lang="uz">UZ</button><button type="button" data-lang="ru" lang="ru">RU</button><button type="button" data-lang="en" lang="en">EN</button>
       </div>
       <a class="btn btn--gold" href="tel:+998938181525"><svg><use href="#i-phone"/></svg><span>+998 93 818 15 25</span></a>
     </nav>
@@ -349,26 +364,26 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <span class="made glass rv"><span class="flag" aria-hidden="true"></span>Сделано в Узбекистане</span>
-        <h1 class="rv d1">Промышленные <span class="gold-text">ёмкости и баки</span></h1>
-        <p class="lead rv d2">Для компрессорных установок, систем отопления и хранения пропана. Ресиверы, расширительные и буферные баки, ёмкости для сжиженного газа с техническим паспортом на каждое изделие.</p>
+        <span class="made glass rv"><span class="flag" aria-hidden="true"></span><span data-i18n="hero.made">Сделано в Узбекистане</span></span>
+        <h1 data-i18n="hero.h1" class="rv d1">Промышленные <span class="gold-text">ёмкости и баки</span></h1>
+        <p data-i18n="hero.lead" class="lead rv d2">Для компрессорных установок, систем отопления и хранения пропана. Ресиверы, расширительные и буферные баки, ёмкости для сжиженного газа с техническим паспортом на каждое изделие.</p>
         <div class="cta-row rv d3">
-          <a class="btn btn--gold" href="#quote">Получить характеристики и цену</a>
-          <a class="btn btn--glass" href="https://t.me/+998938181525" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Написать в Telegram</a>
+          <a data-i18n="cta.quote" class="btn btn--gold" href="#quote">Получить характеристики и цену</a>
+          <a class="btn btn--glass" href="https://t.me/+998938181525" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg><span data-i18n="cta.tg">Написать в Telegram</span></a>
         </div>
         <div class="facts rv d4">
-          <div class="fact glass"><b>4</b><span>типа ёмкостей</span></div>
-          <div class="fact glass"><b>0,5 л</b><span>до 100 м³ объём</span></div>
-          <div class="fact glass"><b>1 000+</b><span>довольных клиентов</span></div>
+          <div class="fact glass"><b>4</b><span data-i18n="fact.types">типа ёмкостей</span></div>
+          <div class="fact glass"><b data-i18n="u.half">0,5 л</b><span data-i18n="fact.vol">до 100 м³ объём</span></div>
+          <div class="fact glass"><b data-i18n="u.k">1 000+</b><span data-i18n="fact.clients">довольных клиентов</span></div>
         </div>
       </div>
       <div class="hero-visual rv d2">
         <div class="hero-card glass glass--gold">
-          <div class="pic"><img src="img/receiver.webp" alt="Линейка воздушных ресиверов TAC Press: оцинкованные, синие и белые, вертикальные и горизонтальные" width="1104" height="669"></div>
-          <div class="cap"><div><b>Воздушные ресиверы</b><span>для компрессора</span></div><span class="vol">0,5 л — 100 м³</span></div>
+          <div class="pic"><img src="img/receiver.webp" alt="Линейка воздушных ресиверов TAC Press: оцинкованные, синие и белые, вертикальные и горизонтальные" data-i18n-alt="alt.hero" width="1104" height="669"></div>
+          <div class="cap"><div><b data-i18n="hero.capt">Воздушные ресиверы</b><span data-i18n="sub.compressor">для компрессора</span></div><span class="vol" data-i18n="u.p4">0,5 л — 100 м³</span></div>
         </div>
-        <div class="float glass f1"><i><svg><use href="#i-doc"/></svg></i>Техпаспорт на каждое изделие</div>
-        <div class="float glass f2"><i><svg><use href="#i-test"/></svg></i>Испытания и контроль качества</div>
+        <div class="float glass f1"><i><svg><use href="#i-doc"/></svg></i><span data-i18n="float.passport">Техпаспорт на каждое изделие</span></div>
+        <div class="float glass f2"><i><svg><use href="#i-test"/></svg></i><span data-i18n="float.tests">Испытания и контроль качества</span></div>
       </div>
     </div>
   </section>
@@ -378,57 +393,57 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <span class="eyebrow">Продукция</span>
-          <h2 class="h2">Четыре линейки ёмкостей<br>под разные задачи</h2>
+          <span data-i18n="prod.eyebrow" class="eyebrow">Продукция</span>
+          <h2 data-i18n="prod.h2" class="h2">Четыре линейки ёмкостей<br>под разные задачи</h2>
         </div>
-        <p class="lead" style="max-width:40ch">Подберём объём и рабочее давление под вашу систему: от небольшого ресивера до станции хранения пропана.</p>
+        <p data-i18n="prod.lead" class="lead" style="max-width:40ch">Подберём объём и рабочее давление под вашу систему: от небольшого ресивера до станции хранения пропана.</p>
       </div>
 
       <div class="products">
         <article class="product glass">
           <div class="shot"><img src="img/propane.webp" alt="Ёмкость для пропана на раме с газозаправочной колонкой и обвязкой" loading="lazy" width="1300" height="737"></div>
           <div class="body">
-            <div class="ptitle"><span class="ico"><svg><use href="#i-flame"/></svg></span><h3>Ёмкость для пропана<small>пропановый баллон</small></h3></div>
-            <div class="volume"><span>Объём</span><b>2 — 100 м³</b></div>
-            <p>Для хранения сжиженного пропана.</p>
-            <ul class="checks"><li><svg><use href="#i-check"/></svg>Безопасность</li><li><svg><use href="#i-check"/></svg>Герметичность</li><li><svg><use href="#i-check"/></svg>Для всех видов задач</li></ul>
+            <div class="ptitle"><span class="ico"><svg><use href="#i-flame"/></svg></span><h3><span data-i18n="p1.t">Ёмкость для пропана</span><small data-i18n="p1.s">пропановый баллон</small></h3></div>
+            <div class="volume"><span data-i18n="vol.label">Объём</span><b data-i18n="u.p1">2 — 100 м³</b></div>
+            <p data-i18n="p1.d">Для хранения сжиженного пропана.</p>
+            <ul class="checks"><li><svg><use href="#i-check"/></svg><span data-i18n="c.safety">Безопасность</span></li><li><svg><use href="#i-check"/></svg><span data-i18n="c.tight">Герметичность</span></li><li><svg><use href="#i-check"/></svg><span data-i18n="c.all">Для всех видов задач</span></li></ul>
           </div>
         </article>
 
         <article class="product glass">
           <div class="shot"><img src="img/expansion.webp" alt="Расширительные баки: синий, красные и белый" loading="lazy" width="905" height="744"></div>
           <div class="body">
-            <div class="ptitle"><span class="ico"><svg><use href="#i-exp"/></svg></span><h3>Расширительные баки<small>для систем отопления</small></h3></div>
-            <div class="volume"><span>Объём</span><b>100 — 10 000 л</b></div>
-            <p>Для компенсации температурного расширения теплоносителя в системах отопления.</p>
-            <ul class="checks"><li><svg><use href="#i-check"/></svg>Стабильное давление</li><li><svg><use href="#i-check"/></svg>Защита системы</li><li><svg><use href="#i-check"/></svg>Эффективная работа</li></ul>
+            <div class="ptitle"><span class="ico"><svg><use href="#i-exp"/></svg></span><h3><span data-i18n="p2.t">Расширительные баки</span><small data-i18n="p2.s">для систем отопления</small></h3></div>
+            <div class="volume"><span data-i18n="vol.label">Объём</span><b data-i18n="u.p2">100 — 10 000 л</b></div>
+            <p data-i18n="p2.d">Для компенсации температурного расширения теплоносителя в системах отопления.</p>
+            <ul class="checks"><li><svg><use href="#i-check"/></svg><span data-i18n="c.stable">Стабильное давление</span></li><li><svg><use href="#i-check"/></svg><span data-i18n="c.protect">Защита системы</span></li><li><svg><use href="#i-check"/></svg><span data-i18n="c.eff">Эффективная работа</span></li></ul>
           </div>
         </article>
 
         <article class="product glass">
           <div class="shot"><img src="img/buffer.webp" alt="Буферные ёмкости в чёрной и серой изоляции" loading="lazy" width="731" height="752"></div>
           <div class="body">
-            <div class="ptitle"><span class="ico"><svg><use href="#i-buf"/></svg></span><h3>Буферная ёмкость<small>бак-аккумулятор</small></h3></div>
-            <div class="volume"><span>Объём</span><b>100 — 10 000 л</b></div>
-            <p>Для накопления тепла и его последующей передачи в систему отопления.</p>
-            <ul class="checks"><li><svg><use href="#i-check"/></svg>Равномерная подача</li><li><svg><use href="#i-check"/></svg>Экономия энергии</li><li><svg><use href="#i-check"/></svg>Увеличение ресурса оборудования</li></ul>
+            <div class="ptitle"><span class="ico"><svg><use href="#i-buf"/></svg></span><h3><span data-i18n="p3.t">Буферная ёмкость</span><small data-i18n="p3.s">бак-аккумулятор</small></h3></div>
+            <div class="volume"><span data-i18n="vol.label">Объём</span><b data-i18n="u.p2">100 — 10 000 л</b></div>
+            <p data-i18n="p3.d">Для накопления тепла и его последующей передачи в систему отопления.</p>
+            <ul class="checks"><li><svg><use href="#i-check"/></svg><span data-i18n="c.even">Равномерная подача</span></li><li><svg><use href="#i-check"/></svg><span data-i18n="c.save">Экономия энергии</span></li><li><svg><use href="#i-check"/></svg><span data-i18n="c.life">Увеличение ресурса оборудования</span></li></ul>
           </div>
         </article>
 
         <article class="product glass">
           <div class="shot"><img src="img/receiver.webp" alt="Воздушные ресиверы разных объёмов" loading="lazy" width="1104" height="669"></div>
           <div class="body">
-            <div class="ptitle"><span class="ico"><svg><use href="#i-gauge"/></svg></span><h3>Воздушный ресивер<small>для компрессора</small></h3></div>
-            <div class="volume"><span>Объём</span><b>0,5 л — 100 м³</b></div>
-            <p>Для накопления сжатого воздуха и сглаживания перепадов давления в компрессорных системах.</p>
-            <ul class="checks"><li><svg><use href="#i-check"/></svg>Надёжность</li><li><svg><use href="#i-check"/></svg>Долговечность</li><li><svg><use href="#i-check"/></svg>Высокое качество</li></ul>
+            <div class="ptitle"><span class="ico"><svg><use href="#i-gauge"/></svg></span><h3><span data-i18n="p4.t">Воздушный ресивер</span><small data-i18n="sub.compressor">для компрессора</small></h3></div>
+            <div class="volume"><span data-i18n="vol.label">Объём</span><b data-i18n="u.p4">0,5 л — 100 м³</b></div>
+            <p data-i18n="p4.d">Для накопления сжатого воздуха и сглаживания перепадов давления в компрессорных системах.</p>
+            <ul class="checks"><li><svg><use href="#i-check"/></svg><span data-i18n="c.rel">Надёжность</span></li><li><svg><use href="#i-check"/></svg><span data-i18n="c.dur">Долговечность</span></li><li><svg><use href="#i-check"/></svg><span data-i18n="c.hq">Высокое качество</span></li></ul>
           </div>
         </article>
       </div>
 
       <!-- volume map on a log scale: 0.5 L .. 100 m3 -->
       <div class="scale glass">
-        <div class="scale-head"><h3>Диапазон объёмов</h3><p>Логарифмическая шкала, от 0,5 литра до 100 м³</p></div>
+        <div class="scale-head"><h3 data-i18n="scale.h">Диапазон объёмов</h3><p data-i18n="scale.p">Логарифмическая шкала, от 0,5 литра до 100 м³</p></div>
         <div class="scale-body">
           <div class="scale-inner" id="scale"></div>
         </div>
@@ -441,23 +456,23 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <span class="eyebrow">Прайс-лист</span>
-          <h2 class="h2">Цены на ресиверы<br>и расширительные баки</h2>
+          <span data-i18n="pr.eyebrow" class="eyebrow">Прайс-лист</span>
+          <h2 data-i18n="pr.h2" class="h2">Цены на ресиверы<br>и расширительные баки</h2>
         </div>
-        <p class="lead" style="max-width:42ch">Цена за штуку и цена при оптовом заказе. Выберите рабочее давление, чтобы увидеть объёмы, толщину стенки и стоимость.</p>
+        <p data-i18n="pr.lead" class="lead" style="max-width:42ch">Цена за штуку и цена при оптовом заказе. Выберите рабочее давление, чтобы увидеть объёмы, толщину стенки и стоимость.</p>
       </div>
       <div class="price-wrap glass">
         <div class="tabs" role="tablist" aria-label="Категории прайс-листа" id="ptabs"></div>
         <div class="pmeta"><h3 id="ptitle">Воздушный ресивер, 8 бар</h3><p id="psub"></p></div>
         <div class="ptable-box" role="tabpanel" id="ppanel" aria-labelledby="ptitle">
           <table class="ptable">
-            <thead><tr><th scope="col">Объём</th><th scope="col">Стенка</th><th scope="col">Цена за шт.</th><th scope="col" id="pbulk-h">От 5 шт., за шт.</th></tr></thead>
+            <thead><tr><th data-i18n="th.vol" scope="col">Объём</th><th data-i18n="th.wall" scope="col">Стенка</th><th data-i18n="th.one" scope="col">Цена за шт.</th><th scope="col" id="pbulk-h">От 5 шт., за шт.</th></tr></thead>
             <tbody id="pbody"></tbody>
           </table>
         </div>
         <div class="pnote">
-          <p>Цены указаны в долларах США за одно изделие. Другие объёмы и давление изготавливаем по запросу, точную стоимость и сроки поставки уточняйте у менеджера.</p>
-          <a class="btn btn--gold" href="#quote">Запросить расчёт</a>
+          <p data-i18n="pr.note">Цены указаны в долларах США за одно изделие. Другие объёмы и давление изготавливаем по запросу, точную стоимость и сроки поставки уточняйте у менеджера.</p>
+          <a data-i18n="pr.cta" class="btn btn--gold" href="#quote">Запросить расчёт</a>
         </div>
       </div>
     </div>
@@ -466,15 +481,15 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   <!-- WHY -->
   <section id="why">
     <div class="wrap">
-      <span class="eyebrow">Почему выбирают нас</span>
-      <h2 class="h2">Каждая ёмкость проходит<br>испытания и получает паспорт</h2>
+      <span data-i18n="why.eyebrow" class="eyebrow">Почему выбирают нас</span>
+      <h2 data-i18n="why.h2" class="h2">Каждая ёмкость проходит<br>испытания и получает паспорт</h2>
       <div class="why-grid">
-        <div class="why glass"><span class="ico"><svg><use href="#i-cert"/></svg></span><h3>Качественная сертифицированная продукция</h3></div>
-        <div class="why glass"><span class="ico"><svg><use href="#i-doc"/></svg></span><h3>Индивидуальный технический паспорт на каждое изделие</h3></div>
-        <div class="why glass"><span class="ico"><svg><use href="#i-test"/></svg></span><h3>Тщательные испытания и контроль качества</h3></div>
-        <div class="why glass"><span class="ico"><svg><use href="#i-users"/></svg></span><h3>Более 1 000 довольных клиентов</h3></div>
-        <div class="why glass"><span class="ico"><svg><use href="#i-globe"/></svg></span><h3>Возможность экспортных поставок</h3></div>
-        <div class="why glass"><span class="ico"><svg><use href="#i-range"/></svg></span><h3>Широкий выбор объёмов для разных задач</h3></div>
+        <div class="why glass"><span class="ico"><svg><use href="#i-cert"/></svg></span><h3 data-i18n="why.1">Качественная сертифицированная продукция</h3></div>
+        <div class="why glass"><span class="ico"><svg><use href="#i-doc"/></svg></span><h3 data-i18n="why.2">Индивидуальный технический паспорт на каждое изделие</h3></div>
+        <div class="why glass"><span class="ico"><svg><use href="#i-test"/></svg></span><h3 data-i18n="why.3">Тщательные испытания и контроль качества</h3></div>
+        <div class="why glass"><span class="ico"><svg><use href="#i-users"/></svg></span><h3 data-i18n="why.4">Более 1 000 довольных клиентов</h3></div>
+        <div class="why glass"><span class="ico"><svg><use href="#i-globe"/></svg></span><h3 data-i18n="why.5">Возможность экспортных поставок</h3></div>
+        <div class="why glass"><span class="ico"><svg><use href="#i-range"/></svg></span><h3 data-i18n="why.6">Широкий выбор объёмов для разных задач</h3></div>
       </div>
     </div>
   </section>
@@ -483,62 +498,62 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   <section id="quote">
     <div class="wrap quote">
       <div>
-        <span class="eyebrow">Запрос цены</span>
-        <h2 class="h2">Получите характеристики <span class="gold-text">и цену</span></h2>
-        <p class="lead">Сообщите тип ёмкости, необходимый объём, рабочее давление и количество. Мы рассчитаем стоимость и сроки поставки.</p>
+        <span data-i18n="q.eyebrow" class="eyebrow">Запрос цены</span>
+        <h2 data-i18n="q.h2" class="h2">Получите характеристики <span class="gold-text">и цену</span></h2>
+        <p data-i18n="q.lead" class="lead">Сообщите тип ёмкости, необходимый объём, рабочее давление и количество. Мы рассчитаем стоимость и сроки поставки.</p>
         <ol class="steps">
-          <li><b>1</b>Тип ёмкости</li>
-          <li><b>2</b>Необходимый объём</li>
-          <li><b>3</b>Рабочее давление</li>
-          <li><b>4</b>Количество</li>
+          <li><b>1</b><span data-i18n="f.type">Тип ёмкости</span></li>
+          <li><b>2</b><span data-i18n="f.volneed">Необходимый объём</span></li>
+          <li><b>3</b><span data-i18n="f.pres">Рабочее давление</span></li>
+          <li><b>4</b><span data-i18n="f.qty">Количество</span></li>
         </ol>
       </div>
       <div class="form glass glass--gold">
         <form id="qform" novalidate>
           <div class="field-w full">
-            <label for="q-type">Тип ёмкости</label>
+            <label data-i18n="f.type" for="q-type">Тип ёмкости</label>
             <select id="q-type" name="type">
-              <option>Воздушный ресивер</option>
-              <option>Ёмкость для пропана</option>
-              <option>Расширительный бак</option>
-              <option>Буферная ёмкость (бак-аккумулятор)</option>
-              <option>Другое / нужна консультация</option>
+              <option data-i18n="o.r">Воздушный ресивер</option>
+              <option data-i18n="o.p">Ёмкость для пропана</option>
+              <option data-i18n="o.e">Расширительный бак</option>
+              <option data-i18n="o.b">Буферная ёмкость (бак-аккумулятор)</option>
+              <option data-i18n="o.x">Другое / нужна консультация</option>
             </select>
           </div>
           <div class="field-w">
-            <label for="q-vol">Объём</label>
-            <input id="q-vol" name="vol" placeholder="например, 500 л" autocomplete="off">
+            <label data-i18n="vol.label" for="q-vol">Объём</label>
+            <input id="q-vol" name="vol" placeholder="например, 500 л" data-i18n-ph="ph.vol" autocomplete="off">
           </div>
           <div class="field-w">
-            <label for="q-pres">Рабочее давление</label>
-            <input id="q-pres" name="pres" placeholder="например, 10 бар" autocomplete="off">
+            <label data-i18n="f.pres" for="q-pres">Рабочее давление</label>
+            <input id="q-pres" name="pres" placeholder="например, 10 бар" data-i18n-ph="ph.pres" autocomplete="off">
           </div>
           <div class="field-w">
-            <label for="q-qty">Количество</label>
+            <label data-i18n="f.qty" for="q-qty">Количество</label>
             <input id="q-qty" name="qty" type="number" min="1" value="1" inputmode="numeric">
           </div>
           <div class="field-w">
-            <label for="q-name">Имя или компания</label>
+            <label data-i18n="f.name" for="q-name">Имя или компания</label>
             <input id="q-name" name="name" autocomplete="organization">
           </div>
           <div class="field-w full">
-            <label for="q-phone">Ваш телефон</label>
+            <label data-i18n="f.phone" for="q-phone">Ваш телефон</label>
             <input id="q-phone" name="phone" type="tel" placeholder="+998 __ ___ __ __" autocomplete="tel">
           </div>
           <div class="field-w full">
-            <label for="q-note">Комментарий</label>
-            <textarea id="q-note" name="note" placeholder="Вертикальный или горизонтальный, оцинковка, сроки, город доставки"></textarea>
+            <label data-i18n="f.note" for="q-note">Комментарий</label>
+            <textarea id="q-note" name="note" placeholder="Вертикальный или горизонтальный, оцинковка, сроки, город доставки" data-i18n-ph="ph.note"></textarea>
           </div>
           <div class="submit">
-            <button class="btn btn--gold" type="submit">Сформировать заявку</button>
-            <p class="note">Заявка откроется готовым текстом. Отправьте её нам в Telegram или продиктуйте по телефону.</p>
+            <button data-i18n="f.submit" class="btn btn--gold" type="submit">Сформировать заявку</button>
+            <p data-i18n="f.hint" class="note">Заявка откроется готовым текстом. Отправьте её нам в Telegram или продиктуйте по телефону.</p>
           </div>
           <p class="err" id="q-err" hidden></p>
           <div class="result" id="q-res" hidden>
             <pre id="q-text"></pre>
             <div class="row">
-              <button class="btn btn--gold" type="button" id="q-copy"><svg><use href="#i-copy"/></svg>Скопировать текст</button>
-              <a class="btn btn--glass" href="https://t.me/+998938181525" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Открыть Telegram</a>
+              <button class="btn btn--gold" type="button" id="q-copy"><svg><use href="#i-copy"/></svg><span data-i18n="f.copy">Скопировать текст</span></button>
+              <a class="btn btn--glass" href="https://t.me/+998938181525" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg><span data-i18n="f.opentg">Открыть Telegram</span></a>
             </div>
           </div>
         </form>
@@ -549,24 +564,24 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   <!-- CONTACTS -->
   <section id="contacts">
     <div class="wrap">
-      <span class="eyebrow">Контакты</span>
-      <h2 class="h2" style="margin-bottom:40px">Звоните, пишите или приезжайте</h2>
+      <span data-i18n="c.eyebrow" class="eyebrow">Контакты</span>
+      <h2 data-i18n="c.h2" class="h2" style="margin-bottom:40px">Звоните, пишите или приезжайте</h2>
       <div class="contact">
         <div class="contact-main glass">
           <div class="c-item">
             <span class="ico"><svg><use href="#i-phone"/></svg></span>
-            <div><small>Телефон</small><a class="big" href="tel:+998938181525">+998 93 818 15 25</a>
+            <div><small data-i18n="c.phone">Телефон</small><a class="big" href="tel:+998938181525">+998 93 818 15 25</a>
               <div class="c-actions">
-                <button class="btn btn--glass" type="button" id="copy-phone"><svg><use href="#i-copy"/></svg>Скопировать номер</button>
+                <button class="btn btn--glass" type="button" id="copy-phone"><svg><use href="#i-copy"/></svg><span data-i18n="c.copyphone">Скопировать номер</span></button>
                 <a class="btn btn--glass" href="https://t.me/+998938181525" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Telegram</a>
               </div>
             </div>
           </div>
           <div class="c-item">
             <span class="ico"><svg><use href="#i-pin"/></svg></span>
-            <div><small>Адрес</small><p>Республика Узбекистан, г. Ташкент,<br>Алмазарский р-н, ул. Галаба, 1</p>
+            <div><small data-i18n="c.addr">Адрес</small><p data-i18n="c.addrtext">Республика Узбекистан, г. Ташкент,<br>Алмазарский р-н, ул. Галаба, 1</p>
               <div class="c-actions">
-                <a class="btn btn--glass" href="https://yandex.uz/maps/?text=%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D0%B7%D0%B0%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%93%D0%B0%D0%BB%D0%B0%D0%B1%D0%B0%2C%201" target="_blank" rel="noopener">Яндекс Карты</a>
+                <a data-i18n="c.yandex" class="btn btn--glass" href="https://yandex.uz/maps/?text=%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C%20%D0%90%D0%BB%D0%BC%D0%B0%D0%B7%D0%B0%D1%80%D1%81%D0%BA%D0%B8%D0%B9%20%D1%80%D0%B0%D0%B9%D0%BE%D0%BD%2C%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%93%D0%B0%D0%BB%D0%B0%D0%B1%D0%B0%2C%201" target="_blank" rel="noopener">Яндекс Карты</a>
                 <a class="btn btn--glass" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%A2%D0%B0%D1%88%D0%BA%D0%B5%D0%BD%D1%82%2C+%D1%83%D0%BB.+%D0%93%D0%B0%D0%BB%D0%B0%D0%B1%D0%B0+1" target="_blank" rel="noopener">Google Maps</a>
               </div>
             </div>
@@ -574,7 +589,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
         </div>
         <div class="qr glass glass--gold">
           <div class="code" role="img" aria-label="QR-код: Telegram TAC Press"><svg version="1.1" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg"><path fill="#0b1240" d="M0,0H1V1H0zM1,0H2V1H1zM2,0H3V1H2zM3,0H4V1H3zM4,0H5V1H4zM5,0H6V1H5zM6,0H7V1H6zM8,0H9V1H8zM9,0H10V1H9zM10,0H11V1H10zM11,0H12V1H11zM16,0H17V1H16zM18,0H19V1H18zM19,0H20V1H19zM20,0H21V1H20zM21,0H22V1H21zM22,0H23V1H22zM23,0H24V1H23zM24,0H25V1H24zM0,1H1V2H0zM6,1H7V2H6zM9,1H10V2H9zM10,1H11V2H10zM11,1H12V2H11zM12,1H13V2H12zM18,1H19V2H18zM24,1H25V2H24zM0,2H1V3H0zM2,2H3V3H2zM3,2H4V3H3zM4,2H5V3H4zM6,2H7V3H6zM8,2H9V3H8zM10,2H11V3H10zM13,2H14V3H13zM15,2H16V3H15zM16,2H17V3H16zM18,2H19V3H18zM20,2H21V3H20zM21,2H22V3H21zM22,2H23V3H22zM24,2H25V3H24zM0,3H1V4H0zM2,3H3V4H2zM3,3H4V4H3zM4,3H5V4H4zM6,3H7V4H6zM9,3H10V4H9zM13,3H14V4H13zM15,3H16V4H15zM16,3H17V4H16zM18,3H19V4H18zM20,3H21V4H20zM21,3H22V4H21zM22,3H23V4H22zM24,3H25V4H24zM0,4H1V5H0zM2,4H3V5H2zM3,4H4V5H3zM4,4H5V5H4zM6,4H7V5H6zM12,4H13V5H12zM13,4H14V5H13zM16,4H17V5H16zM18,4H19V5H18zM20,4H21V5H20zM21,4H22V5H21zM22,4H23V5H22zM24,4H25V5H24zM0,5H1V6H0zM6,5H7V6H6zM8,5H9V6H8zM9,5H10V6H9zM10,5H11V6H10zM13,5H14V6H13zM16,5H17V6H16zM18,5H19V6H18zM24,5H25V6H24zM0,6H1V7H0zM1,6H2V7H1zM2,6H3V7H2zM3,6H4V7H3zM4,6H5V7H4zM5,6H6V7H5zM6,6H7V7H6zM8,6H9V7H8zM10,6H11V7H10zM12,6H13V7H12zM14,6H15V7H14zM16,6H17V7H16zM18,6H19V7H18zM19,6H20V7H19zM20,6H21V7H20zM21,6H22V7H21zM22,6H23V7H22zM23,6H24V7H23zM24,6H25V7H24zM9,7H10V8H9zM10,7H11V8H10zM11,7H12V8H11zM12,7H13V8H12zM14,7H15V8H14zM0,8H1V9H0zM2,8H3V9H2zM6,8H7V9H6zM7,8H8V9H7zM11,8H12V9H11zM12,8H13V9H12zM14,8H15V9H14zM19,8H20V9H19zM22,8H23V9H22zM24,8H25V9H24zM0,9H1V10H0zM1,9H2V10H1zM4,9H5V10H4zM8,9H9V10H8zM9,9H10V10H9zM12,9H13V10H12zM13,9H14V10H13zM14,9H15V10H14zM15,9H16V10H15zM18,9H19V10H18zM21,9H22V10H21zM23,9H24V10H23zM24,9H25V10H24zM0,10H1V11H0zM1,10H2V11H1zM2,10H3V11H2zM4,10H5V11H4zM5,10H6V11H5zM6,10H7V11H6zM9,10H10V11H9zM13,10H14V11H13zM14,10H15V11H14zM15,10H16V11H15zM19,10H20V11H19zM20,10H21V11H20zM21,10H22V11H21zM22,10H23V11H22zM24,10H25V11H24zM0,11H1V12H0zM1,11H2V12H1zM2,11H3V12H2zM4,11H5V12H4zM5,11H6V12H5zM9,11H10V12H9zM18,11H19V12H18zM19,11H20V12H19zM21,11H22V12H21zM4,12H5V13H4zM5,12H6V13H5zM6,12H7V13H6zM9,12H10V13H9zM10,12H11V13H10zM12,12H13V13H12zM14,12H15V13H14zM18,12H19V13H18zM24,12H25V13H24zM2,13H3V14H2zM3,13H4V14H3zM4,13H5V14H4zM7,13H8V14H7zM14,13H15V14H14zM15,13H16V14H15zM18,13H19V14H18zM19,13H20V14H19zM23,13H24V14H23zM24,13H25V14H24zM0,14H1V15H0zM1,14H2V15H1zM2,14H3V15H2zM3,14H4V15H3zM6,14H7V15H6zM10,14H11V15H10zM11,14H12V15H11zM13,14H14V15H13zM14,14H15V15H14zM15,14H16V15H15zM21,14H22V15H21zM22,14H23V15H22zM24,14H25V15H24zM2,15H3V16H2zM3,15H4V16H3zM4,15H5V16H4zM8,15H9V16H8zM9,15H10V16H9zM12,15H13V16H12zM14,15H15V16H14zM15,15H16V16H15zM17,15H18V16H17zM19,15H20V16H19zM20,15H21V16H20zM21,15H22V16H21zM0,16H1V17H0zM1,16H2V17H1zM5,16H6V17H5zM6,16H7V17H6zM8,16H9V17H8zM11,16H12V17H11zM14,16H15V17H14zM16,16H17V17H16zM17,16H18V17H17zM18,16H19V17H18zM19,16H20V17H19zM20,16H21V17H20zM23,16H24V17H23zM8,17H9V18H8zM9,17H10V18H9zM10,17H11V18H10zM11,17H12V18H11zM13,17H14V18H13zM14,17H15V18H14zM16,17H17V18H16zM20,17H21V18H20zM24,17H25V18H24zM0,18H1V19H0zM1,18H2V19H1zM2,18H3V19H2zM3,18H4V19H3zM4,18H5V19H4zM5,18H6V19H5zM6,18H7V19H6zM8,18H9V19H8zM9,18H10V19H9zM11,18H12V19H11zM12,18H13V19H12zM13,18H14V19H13zM14,18H15V19H14zM16,18H17V19H16zM18,18H19V19H18zM20,18H21V19H20zM24,18H25V19H24zM0,19H1V20H0zM6,19H7V20H6zM9,19H10V20H9zM10,19H11V20H10zM11,19H12V20H11zM16,19H17V20H16zM20,19H21V20H20zM24,19H25V20H24zM0,20H1V21H0zM2,20H3V21H2zM3,20H4V21H3zM4,20H5V21H4zM6,20H7V21H6zM9,20H10V21H9zM10,20H11V21H10zM11,20H12V21H11zM14,20H15V21H14zM15,20H16V21H15zM16,20H17V21H16zM17,20H18V21H17zM18,20H19V21H18zM19,20H20V21H19zM20,20H21V21H20zM23,20H24V21H23zM0,21H1V22H0zM2,21H3V22H2zM3,21H4V22H3zM4,21H5V22H4zM6,21H7V22H6zM10,21H11V22H10zM11,21H12V22H11zM14,21H15V22H14zM15,21H16V22H15zM16,21H17V22H16zM17,21H18V22H17zM20,21H21V22H20zM22,21H23V22H22zM23,21H24V22H23zM0,22H1V23H0zM2,22H3V23H2zM3,22H4V23H3zM4,22H5V23H4zM6,22H7V23H6zM8,22H9V23H8zM9,22H10V23H9zM11,22H12V23H11zM13,22H14V23H13zM14,22H15V23H14zM17,22H18V23H17zM19,22H20V23H19zM20,22H21V23H20zM21,22H22V23H21zM23,22H24V23H23zM24,22H25V23H24zM0,23H1V24H0zM6,23H7V24H6zM12,23H13V24H12zM14,23H15V24H14zM16,23H17V24H16zM17,23H18V24H17zM19,23H20V24H19zM20,23H21V24H20zM0,24H1V25H0zM1,24H2V25H1zM2,24H3V25H2zM3,24H4V25H3zM4,24H5V25H4zM5,24H6V25H5zM6,24H7V25H6zM8,24H9V25H8zM9,24H10V25H9zM11,24H12V25H11zM14,24H15V25H14zM15,24H16V25H15zM16,24H17V25H16zM18,24H19V25H18zM21,24H22V25H21zM24,24H25V25H24z" id="qr-path" fill="#000000" fill-opacity="1" fill-rule="nonzero" stroke="none"/></svg></div>
-          <p><b>Каталог и запрос цены</b>Наведите камеру, чтобы открыть Telegram</p>
+          <p data-i18n="c.qr"><b>Каталог и запрос цены</b>Наведите камеру, чтобы открыть Telegram</p>
         </div>
       </div>
     </div>
@@ -585,19 +600,70 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   <div class="wrap">
     <div class="bar">
       <a class="brand" href="#top"><img src="img/logo.png" alt="" width="40" height="32"><span><b class="gold-text">TAC PRESS</b><small>TURBO AIR COMPRESSOR</small></span></a>
-      <span>Промышленные ёмкости и баки · Ташкент, Узбекистан</span>
+      <span data-i18n="foot.tag">Промышленные ёмкости и баки · Ташкент, Узбекистан</span>
       <span>© <span id="yr">2026</span> TAC Press</span>
     </div>
   </div>
 </footer>
 
 <div class="callbar glass" style="border-radius:0">
-  <a class="btn btn--gold" href="tel:+998938181525"><svg><use href="#i-phone"/></svg>Позвонить</a>
+  <a class="btn btn--gold" href="tel:+998938181525"><svg><use href="#i-phone"/></svg><span data-i18n="bar.call">Позвонить</span></a>
   <a class="btn btn--glass" href="https://t.me/+998938181525" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Telegram</a>
 </div>
 
 <script>
 (function(){
+  // ---------- i18n ----------
+  var DICT = { uz: {"nav.products": "Mahsulotlar", "nav.prices": "Narxlar", "nav.why": "Nega biz", "nav.quote": "Narx so'rash", "nav.contacts": "Aloqa", "hero.made": "O'zbekistonda ishlab chiqarilgan", "hero.h1": "Sanoat <span class=\"gold-text\">idishlari va baklari</span>", "hero.lead": "Kompressor qurilmalari, isitish tizimlari va propan saqlash uchun. Resiverlar, kengaytirish va bufer baklari, suyultirilgan gaz idishlari: har bir mahsulotga alohida texnik pasport beriladi.", "cta.quote": "Xususiyatlar va narxni olish", "cta.tg": "Telegram'da yozish", "fact.types": "turdagi idish", "fact.vol": "dan 100 m³ gacha hajm", "fact.clients": "mamnun mijozlar", "hero.capt": "Havo resiverlari", "sub.compressor": "kompressor uchun", "float.passport": "Har bir mahsulotga texnik pasport", "float.tests": "Sinovlar va sifat nazorati", "prod.eyebrow": "Mahsulotlar", "prod.h2": "To'rt turdagi idishlar<br>turli vazifalar uchun", "prod.lead": "Tizimingizga mos hajm va ishchi bosimni tanlab beramiz: kichik resiverdan tortib propan saqlash stansiyasigacha.", "p1.t": "Propan uchun idish", "p1.s": "propan ballon", "vol.label": "Hajm", "p1.d": "Suyultirilgan propanni saqlash uchun.", "c.safety": "Xavfsizlik", "c.tight": "Germetiklik", "c.all": "Har qanday vazifa uchun", "p2.t": "Kengaytirish baklari", "p2.s": "isitish tizimlari uchun", "p2.d": "Isitish tizimlarida issiqlik tashuvchining harorat bilan kengayishini kompensatsiya qilish uchun.", "c.stable": "Barqaror bosim", "c.protect": "Tizim himoyasi", "c.eff": "Samarali ishlash", "p3.t": "Bufer idish", "p3.s": "akkumulyator bak", "p3.d": "Issiqlikni to'plash va keyin isitish tizimiga uzatish uchun.", "c.even": "Bir tekis uzatish", "c.save": "Energiya tejash", "c.life": "Uskunalar resursini oshirish", "p4.t": "Havo resiveri", "p4.d": "Siqilgan havoni to'plash va kompressor tizimlaridagi bosim tebranishlarini tekislash uchun.", "c.rel": "Ishonchlilik", "c.dur": "Uzoq xizmat muddati", "c.hq": "Yuqori sifat", "scale.h": "Hajmlar diapazoni", "scale.p": "Logarifmik shkala, 0,5 litrdan 100 m³ gacha", "pr.eyebrow": "Narxlar ro'yxati", "pr.h2": "Resiverlar va<br>kengaytirish baklari narxlari", "pr.lead": "Bir dona narxi va ulgurji buyurtma narxi. Hajmlar, devor qalinligi va narxni ko'rish uchun ishchi bosimni tanlang.", "th.vol": "Hajm", "th.wall": "Devor", "th.one": "1 dona narxi", "pr.note": "Narxlar bir dona uchun AQSh dollarida ko'rsatilgan. Boshqa hajm va bosimdagi idishlarni buyurtma asosida tayyorlaymiz. Aniq narx va yetkazib berish muddatini menejerdan so'rang.", "pr.cta": "Hisob-kitob so'rash", "why.eyebrow": "Nega bizni tanlashadi", "why.h2": "Har bir idish sinovdan o'tadi<br>va pasport oladi", "why.1": "Sifatli, sertifikatlangan mahsulot", "why.2": "Har bir mahsulotga alohida texnik pasport", "why.3": "Puxta sinovlar va sifat nazorati", "why.4": "1 000 dan ortiq mamnun mijozlar", "why.5": "Eksportga yetkazib berish imkoniyati", "why.6": "Turli vazifalar uchun keng hajm tanlovi", "q.eyebrow": "Narx so'rash", "q.h2": "Xususiyatlar <span class=\"gold-text\">va narxni oling</span>", "q.lead": "Idish turi, kerakli hajm, ishchi bosim va sonini yozing. Biz narx va yetkazib berish muddatini hisoblab beramiz.", "f.type": "Idish turi", "f.volneed": "Kerakli hajm", "f.pres": "Ishchi bosim", "f.qty": "Soni", "f.name": "Ism yoki kompaniya", "f.phone": "Telefoningiz", "f.note": "Izoh", "o.r": "Havo resiveri", "o.p": "Propan uchun idish", "o.e": "Kengaytirish baki", "o.b": "Bufer idish (akkumulyator bak)", "o.x": "Boshqa / maslahat kerak", "ph.vol": "masalan, 500 l", "ph.pres": "masalan, 10 bar", "ph.note": "Vertikal yoki gorizontal, ruxlangan, muddat, yetkazish shahri", "f.submit": "Buyurtma matnini tuzish", "f.hint": "Buyurtma tayyor matn ko'rinishida ochiladi. Uni bizga Telegram'da yuboring yoki telefonda aytib bering.", "f.copy": "Matnni nusxalash", "f.opentg": "Telegram'ni ochish", "c.eyebrow": "Aloqa", "c.h2": "Qo'ng'iroq qiling, yozing yoki keling", "c.phone": "Telefon", "c.copyphone": "Raqamni nusxalash", "c.addr": "Manzil", "c.addrtext": "O'zbekiston Respublikasi, Toshkent sh.,<br>Olmazor tumani, G'alaba ko'chasi, 1", "c.yandex": "Yandex Xaritalar", "c.qr": "<b>Katalog va narx so'rash</b>Telegram'ni ochish uchun kamerani yo'naltiring", "foot.tag": "Sanoat idishlari va baklari · Toshkent, O'zbekiston", "bar.call": "Qo'ng'iroq", "u.p1": "2 — 100 m³", "u.p2": "100 — 10 000 l", "u.p4": "0,5 l — 100 m³", "u.half": "0,5 l", "u.k": "1 000+", "alt.hero": "TAC Press havo resiverlari: ruxlangan, ko'k va oq, vertikal va gorizontal"}, en: {"nav.products": "Products", "nav.prices": "Prices", "nav.why": "Why us", "nav.quote": "Get a quote", "nav.contacts": "Contacts", "hero.made": "Made in Uzbekistan", "hero.h1": "Industrial <span class=\"gold-text\">tanks and vessels</span>", "hero.lead": "For compressor units, heating systems and propane storage. Air receivers, expansion and buffer tanks, LPG vessels, each supplied with its own technical passport.", "cta.quote": "Get specs and pricing", "cta.tg": "Message us on Telegram", "fact.types": "tank types", "fact.vol": "to 100 m³ volume", "fact.clients": "satisfied clients", "hero.capt": "Air receivers", "sub.compressor": "for compressors", "float.passport": "Technical passport for every unit", "float.tests": "Pressure testing and quality control", "prod.eyebrow": "Products", "prod.h2": "Four tank lines<br>for different jobs", "prod.lead": "We size the volume and working pressure to your system, from a small receiver to a propane storage station.", "p1.t": "Propane tank", "p1.s": "LPG storage vessel", "vol.label": "Volume", "p1.d": "For storing liquefied propane.", "c.safety": "Safety", "c.tight": "Leak-tight", "c.all": "For any application", "p2.t": "Expansion tanks", "p2.s": "for heating systems", "p2.d": "Absorb the thermal expansion of the heat-transfer fluid in heating systems.", "c.stable": "Stable pressure", "c.protect": "System protection", "c.eff": "Efficient operation", "p3.t": "Buffer tank", "p3.s": "heat accumulator", "p3.d": "Stores heat and releases it into the heating system as needed.", "c.even": "Even supply", "c.save": "Energy savings", "c.life": "Longer equipment life", "p4.t": "Air receiver", "p4.d": "Stores compressed air and smooths out pressure swings in compressor systems.", "c.rel": "Reliability", "c.dur": "Durability", "c.hq": "High quality", "scale.h": "Volume range", "scale.p": "Logarithmic scale, from 0.5 litres to 100 m³", "pr.eyebrow": "Price list", "pr.h2": "Prices for receivers<br>and expansion tanks", "pr.lead": "Unit price and bulk price. Pick a working pressure to see volumes, wall thickness and cost.", "th.vol": "Volume", "th.wall": "Wall", "th.one": "Unit price", "pr.note": "Prices are in US dollars per unit. Other volumes and pressures are made to order; ask a manager for the exact price and lead time.", "pr.cta": "Request a quote", "why.eyebrow": "Why clients choose us", "why.h2": "Every tank is tested<br>and gets its own passport", "why.1": "Quality, certified products", "why.2": "Individual technical passport for every unit", "why.3": "Thorough testing and quality control", "why.4": "More than 1,000 satisfied clients", "why.5": "Export deliveries available", "why.6": "Wide choice of volumes for any task", "q.eyebrow": "Get a quote", "q.h2": "Get specs <span class=\"gold-text\">and pricing</span>", "q.lead": "Tell us the tank type, volume, working pressure and quantity. We will calculate the price and delivery time.", "f.type": "Tank type", "f.volneed": "Required volume", "f.pres": "Working pressure", "f.qty": "Quantity", "f.name": "Name or company", "f.phone": "Your phone", "f.note": "Comment", "o.r": "Air receiver", "o.p": "Propane tank", "o.e": "Expansion tank", "o.b": "Buffer tank (heat accumulator)", "o.x": "Other / need advice", "ph.vol": "e.g. 500 L", "ph.pres": "e.g. 10 bar", "ph.note": "Vertical or horizontal, galvanized, deadline, delivery city", "f.submit": "Create request", "f.hint": "Your request appears as ready-made text. Send it to us on Telegram or read it out over the phone.", "f.copy": "Copy text", "f.opentg": "Open Telegram", "c.eyebrow": "Contacts", "c.h2": "Call, write or visit us", "c.phone": "Phone", "c.copyphone": "Copy number", "c.addr": "Address", "c.addrtext": "Galaba St. 1, Almazar district,<br>Tashkent, Republic of Uzbekistan", "c.yandex": "Yandex Maps", "c.qr": "<b>Catalog and price request</b>Point your camera to open Telegram", "foot.tag": "Industrial tanks and vessels · Tashkent, Uzbekistan", "bar.call": "Call", "u.p1": "2 — 100 m³", "u.p2": "100 — 10,000 L", "u.p4": "0.5 L — 100 m³", "u.half": "0.5 L", "u.k": "1,000+", "alt.hero": "TAC Press air receivers: galvanized, blue and white, vertical and horizontal"} };
+  var S = {
+    ru: { title:'TAC Press — промышленные ёмкости и баки', desc:'TAC Press (Turbo Air Compressor) — производство промышленных ёмкостей в Узбекистане: ёмкости для пропана, расширительные баки, буферные ёмкости и воздушные ресиверы.',
+      l:'л', m3:'м³', mm:'мм', scale:['Воздушный ресивер','Ёмкость для пропана','Расширительный бак','Буферная ёмкость'],
+      tabs:['Ресивер 8 бар','Ресивер 10 бар','Ресивер 16 бар','Расширительный бак'], titles:['Воздушный ресивер, 8 бар','Воздушный ресивер, 10 бар','Воздушный ресивер, 16 бар','Расширительный бак, 10 бар'],
+      sub:function(n,a,b,q){ return n+' типоразмеров · от '+a+' до '+b+' л · скидка при заказе от '+q+' шт.'; }, bulk:function(q){ return 'От '+q+' шт., за шт.'; },
+      copied:'Скопировано', selected:'Выделено, нажмите Ctrl+C', errPhone:'Укажите телефон, чтобы мы могли прислать расчёт.',
+      req:['Заявка на расчёт — TAC Press','Тип','Объём','Рабочее давление','Количество','Контакт','Комментарий','уточнить'], numLocale:'ru-RU' },
+    uz: { title:'TAC Press — sanoat idishlari va baklari', desc:"TAC Press (Turbo Air Compressor) — O'zbekistonda sanoat idishlari ishlab chiqarish: propan idishlari, kengaytirish baklari, bufer idishlar va havo resiverlari.",
+      l:'l', m3:'m³', mm:'mm', scale:['Havo resiveri','Propan uchun idish','Kengaytirish baki','Bufer idish'],
+      tabs:['Resiver 8 bar','Resiver 10 bar','Resiver 16 bar','Kengaytirish baki'], titles:['Havo resiveri, 8 bar','Havo resiveri, 10 bar','Havo resiveri, 16 bar','Kengaytirish baki, 10 bar'],
+      sub:function(n,a,b,q){ return n+" xil o'lcham · "+a+' dan '+b+' l gacha · '+q+' donadan boshlab chegirma'; }, bulk:function(q){ return q+' donadan, 1 dona'; },
+      copied:'Nusxalandi', selected:'Belgilandi, Ctrl+C ni bosing', errPhone:'Hisob-kitobni yuborishimiz uchun telefon raqamingizni kiriting.',
+      req:["Hisob-kitob uchun so'rov — TAC Press",'Turi','Hajm','Ishchi bosim','Soni','Aloqa','Izoh','aniqlashtirish kerak'], numLocale:'ru-RU' },
+    en: { title:'TAC Press — industrial tanks and vessels', desc:'TAC Press (Turbo Air Compressor) manufactures industrial tanks in Uzbekistan: propane tanks, expansion tanks, buffer tanks and air receivers.',
+      l:'L', m3:'m³', mm:'mm', scale:['Air receiver','Propane tank','Expansion tank','Buffer tank'],
+      tabs:['Receiver 8 bar','Receiver 10 bar','Receiver 16 bar','Expansion tank'], titles:['Air receiver, 8 bar','Air receiver, 10 bar','Air receiver, 16 bar','Expansion tank, 10 bar'],
+      sub:function(n,a,b,q){ return n+' sizes · '+a+' to '+b+' L · discount from '+q+' units'; }, bulk:function(q){ return 'From '+q+' pcs, per unit'; },
+      copied:'Copied', selected:'Selected, press Ctrl+C', errPhone:'Please enter your phone number so we can send the quote.',
+      req:['Quote request — TAC Press','Type','Volume','Working pressure','Quantity','Contact','Comment','to be confirmed'], numLocale:'en-US' }
+  };
+  var LANG = 'ru';
+  var RU = {}, RUPH = {}, RUALT = {};
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ var k = el.getAttribute('data-i18n'); if (!(k in RU)) RU[k] = el.innerHTML; });
+  document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ RUPH[el.getAttribute('data-i18n-ph')] = el.getAttribute('placeholder'); });
+  document.querySelectorAll('[data-i18n-alt]').forEach(function(el){ RUALT[el.getAttribute('data-i18n-alt')] = el.getAttribute('alt'); });
+  function tr(k){ return LANG === 'ru' ? RU[k] : (DICT[LANG][k] != null ? DICT[LANG][k] : RU[k]); }
+  function L(){ return S[LANG]; }
+  var rerender = [];
+  function setLang(lang, save){
+    if (!S[lang]) lang = 'ru';
+    LANG = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){ el.innerHTML = tr(el.getAttribute('data-i18n')); });
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){ var k = el.getAttribute('data-i18n-ph'); el.setAttribute('placeholder', lang === 'ru' ? RUPH[k] : DICT[lang][k]); });
+    document.querySelectorAll('[data-i18n-alt]').forEach(function(el){ var k = el.getAttribute('data-i18n-alt'); el.setAttribute('alt', lang === 'ru' ? RUALT[k] : DICT[lang][k]); });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang); });
+    document.title = L().title;
+    var md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute('content', L().desc);
+    rerender.forEach(function(fn){ fn(); });
+    if (save) { try { localStorage.setItem('tac-lang', lang); } catch (e) {} }
+  }
+  document.querySelector('.lang').addEventListener('click', function(e){ var b = e.target.closest('button[data-lang]'); if (b) setLang(b.getAttribute('data-lang'), true); });
+  function initialLang(){
+    try { var q = new URLSearchParams(location.search).get('lang'); if (q && S[q]) return q; } catch (e) {}
+    try { var s = localStorage.getItem('tac-lang'); if (s && S[s]) return s; } catch (e) {}
+    var n = (navigator.language || 'ru').slice(0,2).toLowerCase();
+    return n === 'uz' ? 'uz' : n === 'en' ? 'en' : 'ru';
+  }
+
   // pointer-following highlight on glass
   if (matchMedia('(hover:hover)').matches) {
     document.addEventListener('pointermove', function(e){
@@ -612,43 +678,42 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   // volume scale, log10 litres from 0.5 L (-0.301) to 100 000 L (5)
   var MIN = Math.log10(0.5), MAX = 5;
   function pos(l){ return ((Math.log10(l) - MIN) / (MAX - MIN)) * 100; }
-  var rows = [
-    ['Воздушный ресивер', 0.5, 100000, ''],
-    ['Ёмкость для пропана', 2000, 100000, 'g'],
-    ['Расширительный бак', 100, 10000, ''],
-    ['Буферная ёмкость', 100, 10000, '']
-  ];
-  var s = document.getElementById('scale'), h = '';
-  rows.forEach(function(r){
-    h += '<div class="lbl">' + r[0] + '</div><div class="track"><div class="range ' + r[3] + '" style="left:' + pos(r[1]).toFixed(2) + '%;width:' + (pos(r[2]) - pos(r[1])).toFixed(2) + '%"></div></div>';
-  });
-  var ticks = [[0.5,'0,5 л'],[10,'10 л'],[100,'100 л'],[1000,'1 м³'],[10000,'10 м³'],[100000,'100 м³']];
-  h += '<div></div><div class="ticks">' + ticks.map(function(t){ return '<span style="left:' + pos(t[0]).toFixed(2) + '%">' + t[1] + '</span>'; }).join('') + '</div>';
-  s.innerHTML = h;
-  // keep end labels inside the track
-  var sp = s.querySelectorAll('.ticks span');
-  sp[0].style.transform = 'none'; sp[sp.length-1].style.transform = 'translateX(-100%)';
-
+  var rows = [[0.5, 100000, ''],[2000, 100000, 'g'],[100, 10000, ''],[100, 10000, '']];
+  var s = document.getElementById('scale');
+  function renderScale(){
+    var t = L(), h = '';
+    rows.forEach(function(r, i){
+      h += '<div class="lbl">' + t.scale[i] + '</div><div class="track"><div class="range ' + r[2] + '" style="left:' + pos(r[0]).toFixed(2) + '%;width:' + (pos(r[1]) - pos(r[0])).toFixed(2) + '%"></div></div>';
+    });
+    var half = LANG === 'en' ? '0.5' : '0,5';
+    var ticks = [[0.5, half+' '+t.l],[10,'10 '+t.l],[100,'100 '+t.l],[1000,'1 '+t.m3],[10000,'10 '+t.m3],[100000,'100 '+t.m3]];
+    h += '<div></div><div class="ticks">' + ticks.map(function(x){ return '<span style="left:' + pos(x[0]).toFixed(2) + '%">' + x[1] + '</span>'; }).join('') + '</div>';
+    s.innerHTML = h;
+    var sp = s.querySelectorAll('.ticks span');
+    sp[0].style.transform = 'none'; sp[sp.length-1].style.transform = 'translateX(-100%)';
+  }
+  rerender.push(renderScale);
 
   // price list (USD per unit)
   var PRICES = [
-    {id:'r8', tab:'Ресивер 8 бар', title:'Воздушный ресивер, 8 бар', bulk:5, wall:true, rows:[[500,'2,7',260,230],[1000,'2,7',360,330]]},
-    {id:'r10', tab:'Ресивер 10 бар', title:'Воздушный ресивер, 10 бар', bulk:5, wall:true, rows:[[300,'3',250,230],[500,'3',280,250],[1000,'3',415,385],[1500,'4',950,810],[2000,'4',1200,1080],[2500,'4',1400,1260],[3000,'6',1600,1440],[4000,'6',2300,2070],[5000,'6',3000,2700]]},
-    {id:'r16', tab:'Ресивер 16 бар', title:'Воздушный ресивер, 16 бар', bulk:3, wall:true, rows:[[300,'4',300,275],[500,'5',370,325],[1000,'5',480,420],[1500,'5',1000,880],[2000,'6',1500,1300],[2500,'6',2150,1900],[3000,'8',2400,2200],[4000,'8',2600,2350],[5000,'8',3300,3000]]},
-    {id:'b10', tab:'Расширительный бак', title:'Расширительный бак, 10 бар', bulk:5, wall:false, rows:[[150,'',170,155],[200,'',225,190],[300,'',290,240],[500,'',450,365],[750,'',650,555],[1000,'',800,730],[1500,'',1300,1100],[2000,'',1500,1350]]}
+    {id:'r8', bulk:5, wall:true, rows:[[500,'2,7',260,230],[1000,'2,7',360,330]]},
+    {id:'r10', bulk:5, wall:true, rows:[[300,'3',250,230],[500,'3',280,250],[1000,'3',415,385],[1500,'4',950,810],[2000,'4',1200,1080],[2500,'4',1400,1260],[3000,'6',1600,1440],[4000,'6',2300,2070],[5000,'6',3000,2700]]},
+    {id:'r16', bulk:3, wall:true, rows:[[300,'4',300,275],[500,'5',370,325],[1000,'5',480,420],[1500,'5',1000,880],[2000,'6',1500,1300],[2500,'6',2150,1900],[3000,'8',2400,2200],[4000,'8',2600,2350],[5000,'8',3300,3000]]},
+    {id:'b10', bulk:5, wall:false, rows:[[150,'',170,155],[200,'',225,190],[300,'',290,240],[500,'',450,365],[750,'',650,555],[1000,'',800,730],[1500,'',1300,1100],[2000,'',1500,1350]]}
   ];
-  function num(n){ return n.toLocaleString('ru-RU').replace(/ | /g,' '); }
+  function num(n){ return n.toLocaleString(L().numLocale).replace(/\u00a0|\u202f/g,' '); }
   var tabs = document.getElementById('ptabs');
-  tabs.innerHTML = PRICES.map(function(c,i){ return '<button class="tab" role="tab" type="button" id="tab-'+c.id+'" aria-controls="ppanel" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'">'+c.tab+'</button>'; }).join('');
+  var cur = 1;
+  function renderTabs(){ tabs.innerHTML = PRICES.map(function(c,i){ return '<button class="tab" role="tab" type="button" id="tab-'+c.id+'" aria-controls="ppanel" aria-selected="'+(i===cur)+'" tabindex="'+(i===cur?0:-1)+'">'+L().tabs[i]+'</button>'; }).join(''); }
   function showPrices(i){
-    var c = PRICES[i];
+    cur = i; var c = PRICES[i], t = L();
     tabs.querySelectorAll('.tab').forEach(function(b,j){ b.setAttribute('aria-selected', j===i); b.tabIndex = j===i ? 0 : -1; });
-    document.getElementById('ptitle').textContent = c.title;
-    document.getElementById('psub').textContent = c.rows.length + ' типоразмеров · от ' + num(c.rows[0][0]) + ' до ' + num(c.rows[c.rows.length-1][0]) + ' л · скидка при заказе от ' + c.bulk + ' шт.';
-    document.getElementById('pbulk-h').textContent = 'От ' + c.bulk + ' шт., за шт.';
+    document.getElementById('ptitle').textContent = t.titles[i];
+    document.getElementById('psub').textContent = t.sub(c.rows.length, num(c.rows[0][0]), num(c.rows[c.rows.length-1][0]), c.bulk);
+    document.getElementById('pbulk-h').textContent = t.bulk(c.bulk);
     document.getElementById('pbody').innerHTML = c.rows.map(function(r){
       var pct = Math.round((1 - r[3]/r[2]) * 100);
-      return '<tr><td class="vol">'+num(r[0])+' л</td><td class="wall">'+(c.wall ? r[1]+' мм' : '—')+'</td><td class="one">$ '+num(r[2])+'</td><td class="bulk">$ '+num(r[3])+'<span class="save">−'+pct+'%</span></td></tr>';
+      return '<tr><td class="vol">'+num(r[0])+' '+t.l+'</td><td class="wall">'+(c.wall ? (LANG==='en' ? r[1].replace(',','.') : r[1])+' '+t.mm : '—')+'</td><td class="one">$ '+num(r[2])+'</td><td class="bulk">$ '+num(r[3])+'<span class="save">−'+pct+'%</span></td></tr>';
     }).join('');
   }
   tabs.addEventListener('click', function(e){ var b = e.target.closest('.tab'); if (b) showPrices([].indexOf.call(tabs.children, b)); });
@@ -656,17 +721,17 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
     var i = [].indexOf.call(tabs.children, document.activeElement); if (i < 0) return;
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); i = (i + (e.key === 'ArrowRight' ? 1 : PRICES.length - 1)) % PRICES.length; showPrices(i); tabs.children[i].focus(); }
   });
-  showPrices(1);
+  rerender.push(function(){ renderTabs(); showPrices(cur); });
 
   function copy(text, btn, el){
-    var done = function(){ var o = btn.innerHTML; btn.textContent = 'Скопировано'; setTimeout(function(){ btn.innerHTML = o; }, 1800); };
+    var done = function(){ var o = btn.innerHTML; btn.textContent = L().copied; setTimeout(function(){ btn.innerHTML = o; }, 1800); };
     try {
       navigator.clipboard.writeText(text).then(done, function(){ fallback(); });
     } catch (e) { fallback(); }
     function fallback(){
       var r = document.createRange(); r.selectNodeContents(el || btn);
       var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
-      btn.textContent = 'Выделено, нажмите Ctrl+C';
+      btn.textContent = L().selected;
     }
   }
   document.getElementById('copy-phone').addEventListener('click', function(){ copy('+998 93 818 15 25', this, document.querySelector('.c-item .big')); });
@@ -677,21 +742,23 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
     e.preventDefault();
     var v = function(id){ return document.getElementById(id).value.trim(); };
     var err = document.getElementById('q-err');
-    if (!v('q-phone')) { err.textContent = 'Укажите телефон, чтобы мы могли прислать расчёт.'; err.hidden = false; document.getElementById('q-phone').focus(); return; }
+    if (!v('q-phone')) { err.textContent = L().errPhone; err.hidden = false; document.getElementById('q-phone').focus(); return; }
     err.hidden = true;
-    var lines = ['Заявка на расчёт — TAC Press',
-      'Тип: ' + v('q-type'),
-      'Объём: ' + (v('q-vol') || 'уточнить'),
-      'Рабочее давление: ' + (v('q-pres') || 'уточнить'),
-      'Количество: ' + (v('q-qty') || '1'),
-      'Контакт: ' + [v('q-name'), v('q-phone')].filter(Boolean).join(', ')];
-    if (v('q-note')) lines.push('Комментарий: ' + v('q-note'));
+    var R = L().req, sel = document.getElementById('q-type');
+    var lines = [R[0],
+      R[1] + ': ' + sel.options[sel.selectedIndex].text,
+      R[2] + ': ' + (v('q-vol') || R[7]),
+      R[3] + ': ' + (v('q-pres') || R[7]),
+      R[4] + ': ' + (v('q-qty') || '1'),
+      R[5] + ': ' + [v('q-name'), v('q-phone')].filter(Boolean).join(', ')];
+    if (v('q-note')) lines.push(R[6] + ': ' + v('q-note'));
     document.getElementById('q-text').textContent = lines.join('\n');
     var res = document.getElementById('q-res'); res.hidden = false;
     res.scrollIntoView({behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block:'nearest'});
   });
   document.getElementById('q-copy').addEventListener('click', function(){ copy(document.getElementById('q-text').textContent, this, document.getElementById('q-text')); });
   document.getElementById('yr').textContent = new Date().getFullYear();
+  setLang(initialLang(), false);
 })();
 </script>
 </body>
