@@ -4,6 +4,7 @@
 
 - `index.html` — вся страница (HTML, CSS, JS в одном файле)
 - `img/` — логотип и фото продукции
+- `video/` — реальные видео для галереи (список файлов в массиве `MEDIA` в `index.html`)
 - `Dockerfile` — раздача через Caddy на порту `$PORT` (Railway)
 
 Локально: `python3 -m http.server` и открыть http://localhost:8000
