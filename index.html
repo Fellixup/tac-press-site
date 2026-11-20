@@ -289,6 +289,8 @@ section{padding-block:clamp(64px,9vw,120px)}
 
 /* ---------- footer ---------- */
 footer{padding-block:40px 60px}
+.foot-gal{color:var(--gold-2);font-weight:700;text-decoration:none;padding:8px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(246,223,164,.35)}
+.foot-gal:hover{background:rgba(246,223,164,.1)}
 footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid var(--line);color:var(--fg-2);font-size:13px}
 
 /* mobile call bar */
@@ -398,7 +400,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
         <a data-i18n="nav.why" href="#why">Почему мы</a>
         <a data-i18n="nav.quote" href="#quote">Запрос цены</a>
         <a data-i18n="nav.contacts" href="#contacts">Контакты</a>
-        <a data-i18n="nav.gallery" href="#gallery">Галерея</a>
+        <a data-i18n="nav.gallery" href="galereya.html">Галерея</a>
       </div>
       <div class="lang" role="group" aria-label="Til / Язык / Language">
         <button type="button" data-lang="uz" lang="uz">UZ</button><button type="button" data-lang="ru" lang="ru">RU</button><button type="button" data-lang="en" lang="en">EN</button>
@@ -643,39 +645,18 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
       </div>
     </div>
   </section>
-  <!-- GALLERY: real photos and video. Files are listed in the MEDIA array in the script below. -->
-  <section id="gallery">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span data-i18n="g.eyebrow" class="eyebrow">Реальные фото и видео</span>
-          <h2 data-i18n="g.h2" class="h2">Наш завод и продукция <span class="gold-text">вживую</span></h2>
-          <p data-i18n="g.lead" class="lead">Настоящие кадры из цеха: сварка, испытания давлением, готовые ёмкости и отгрузка клиентам.</p>
-        </div>
-      </div>
-      <div class="tabs gfilter" id="gfilter" role="group" aria-label="Фильтр галереи"></div>
-      <div class="gal" id="gal"></div>
-    </div>
-  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="bar">
       <a class="brand" href="#top"><img src="img/logo.png" alt="" width="40" height="32"><span><b class="gold-text">TAC PRESS</b><small>TURBO AIR COMPRESSOR</small></span></a>
+      <a class="foot-gal" data-i18n="nav.gallery" href="galereya.html">Галерея</a>
       <span data-i18n="foot.tag">Промышленные ёмкости и баки · Ташкент, Узбекистан</span>
       <span>© <span id="yr">2026</span> TAC Press</span>
     </div>
   </div>
 </footer>
-
-<dialog class="lb" id="lb" aria-label="Просмотр">
-  <div class="lb-box glass">
-    <button class="btn btn--glass lb-x" type="button" id="lb-x" aria-label="Закрыть"><svg><use href="#i-x"/></svg></button>
-    <div class="lb-media" id="lb-media"></div>
-    <div class="lb-cap" id="lb-cap"></div>
-  </div>
-</dialog>
 
 <div class="callbar glass" style="border-radius:0">
   <a class="btn btn--gold" href="tel:+998938181525"><svg><use href="#i-phone"/></svg><span data-i18n="bar.call">Позвонить</span></a>
@@ -798,57 +779,6 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); i = (i + (e.key === 'ArrowRight' ? 1 : PRICES.length - 1)) % PRICES.length; showPrices(i); tabs.children[i].focus(); }
   });
   rerender.push(function(){ renderTabs(); showPrices(cur); });
-
-  // ---------- gallery: real photos & video ----------
-  // HOW TO ADD MEDIA: put the file into the video/ or photo/ folder next to index.html,
-  // then fill in "src" below (and "poster" for a video: a preview frame, e.g. video/xxx.jpg).
-  // An entry with an empty src shows as a "coming soon" placeholder. The first visible item is shown large.
-  var MEDIA = [
-    {type:'video', src:'video/jonatish-1.mp4', poster:'video/jonatish-1.jpg', t:{ru:'Готовые ёмкости отправляются клиенту', uz:"Tayyor idishlar mijozga jo'natilmoqda", en:'Finished tanks on their way to a client'}},
-    {type:'video', src:'', poster:'', t:{ru:'Наш цех: производство ёмкостей', uz:"Seximiz: idishlar ishlab chiqarilishi", en:'Our shop: tank production'}},
-    {type:'video', src:'', poster:'', t:{ru:'Испытание давлением', uz:'Bosim sinovi', en:'Pressure test'}},
-    {type:'video', src:'', poster:'', t:{ru:'Сварка корпуса', uz:'Korpusni payvandlash', en:'Shell welding'}},
-    {type:'photo', src:'', t:{ru:'Готовые ресиверы на складе', uz:'Omborda tayyor resiverlar', en:'Finished receivers in stock'}},
-    {type:'photo', src:'', t:{ru:'Ёмкости для пропана', uz:'Propan uchun idishlar', en:'Propane tanks'}}
-  ];
-  var GL = {
-    ru:{all:'Все', photo:'Фото', video:'Видео', soonV:'Видео скоро', soonP:'Фото скоро', filter:'Фильтр галереи', close:'Закрыть', view:'Просмотр'},
-    uz:{all:'Hammasi', photo:'Foto', video:'Video', soonV:'Video tez orada', soonP:'Foto tez orada', filter:'Galereya filtri', close:'Yopish', view:"Ko'rish"},
-    en:{all:'All', photo:'Photos', video:'Video', soonV:'Video coming soon', soonP:'Photo coming soon', filter:'Gallery filter', close:'Close', view:'View'}
-  };
-  var gal = document.getElementById('gal'), gf = document.getElementById('gfilter'), gcur = 'all';
-  var lb = document.getElementById('lb'), lbm = document.getElementById('lb-media'), lbc = document.getElementById('lb-cap');
-  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function renderGallery(){
-    var g = GL[LANG];
-    gf.setAttribute('aria-label', g.filter);
-    lb.setAttribute('aria-label', g.view); document.getElementById('lb-x').setAttribute('aria-label', g.close);
-    gf.innerHTML = ['all','video','photo'].map(function(k){ return '<button class="tab" type="button" data-f="'+k+'" aria-pressed="'+(k===gcur)+'" aria-selected="'+(k===gcur)+'">'+g[k]+'</button>'; }).join('');
-    var list = MEDIA.map(function(m,i){ return [m,i]; }).filter(function(x){ return gcur === 'all' || x[0].type === gcur; });
-    gal.innerHTML = list.map(function(x, n){
-      var m = x[0], cap = esc(m.t[LANG] || m.t.ru), big = n === 0 ? ' big' : ((n === list.length - 1 && list.length % 2 === 0) ? ' wide' : ''), isV = m.type === 'video';
-      var kind = '<span class="kind"><svg><use href="#i-'+(isV?'video':'photo')+'"/></svg>'+(isV ? g.video : g.photo)+'</span>';
-      if (!m.src) return '<div class="tile glass empty'+big+'"><div class="ph"><span class="ico"><svg><use href="#i-'+(isV?'video':'photo')+'"/></svg></span><b>'+cap+'</b><span>'+(isV ? g.soonV : g.soonP)+'</span></div></div>';
-      var media = isV
-        ? (m.poster ? '<img class="m" src="'+esc(m.poster)+'" alt="" loading="lazy">' : '<video class="m" src="'+esc(m.src)+'#t=0.5" muted playsinline preload="metadata"></video>') + '<span class="play"><svg><use href="#i-play"/></svg></span>'
-        : '<img class="m" src="'+esc(m.src)+'" alt="'+cap+'" loading="lazy">';
-      return '<button class="tile glass'+big+'" type="button" data-i="'+x[1]+'">'+media+'<span class="shade"></span>'+kind+'<span class="cap"><b>'+cap+'</b></span></button>';
-    }).join('');
-  }
-  rerender.push(renderGallery);
-  gf.addEventListener('click', function(e){ var b = e.target.closest('[data-f]'); if (b) { gcur = b.getAttribute('data-f'); renderGallery(); } });
-  gal.addEventListener('click', function(e){
-    var b = e.target.closest('[data-i]'); if (!b) return;
-    var m = MEDIA[+b.getAttribute('data-i')], cap = esc(m.t[LANG] || m.t.ru);
-    lbm.innerHTML = m.type === 'video'
-      ? '<video src="'+esc(m.src)+'"'+(m.poster ? ' poster="'+esc(m.poster)+'"' : '')+' controls autoplay playsinline></video>'
-      : '<img src="'+esc(m.src)+'" alt="'+cap+'">';
-    lbc.innerHTML = cap;
-    if (lb.showModal) lb.showModal(); else lb.setAttribute('open','');
-  });
-  document.getElementById('lb-x').addEventListener('click', function(){ lb.close ? lb.close() : lb.removeAttribute('open'); });
-  lb.addEventListener('click', function(e){ if (e.target === lb) lb.close(); });
-  lb.addEventListener('close', function(){ lbm.innerHTML = ''; });
 
   function copy(text, btn, el){
     var done = function(){ var o = btn.innerHTML; btn.textContent = L().copied; setTimeout(function(){ btn.innerHTML = o; }, 1800); };
