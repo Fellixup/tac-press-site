@@ -539,11 +539,9 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   // Items alternate between the top row (moves left to right) and the bottom row (right to left).
   var MEDIA = [
     {type:'video', src:'video/jonatish-1.mp4', poster:'video/jonatish-1.jpg', t:{ru:'Готовые ёмкости отправляются клиенту', uz:"Tayyor idishlar mijozga jo'natilmoqda", en:'Finished tanks on their way to a client'}},
-    {type:'video', src:'', poster:'', t:{ru:'Наш цех: производство ёмкостей', uz:'Seximiz: idishlar ishlab chiqarilishi', en:'Our shop: tank production'}},
-    {type:'video', src:'', poster:'', t:{ru:'Испытание давлением', uz:'Bosim sinovi', en:'Pressure test'}},
-    {type:'video', src:'', poster:'', t:{ru:'Сварка корпуса', uz:'Korpusni payvandlash', en:'Shell welding'}},
-    {type:'photo', src:'', t:{ru:'Готовые ресиверы на складе', uz:'Omborda tayyor resiverlar', en:'Finished receivers in stock'}},
-    {type:'photo', src:'', t:{ru:'Ёмкости для пропана', uz:'Propan uchun idishlar', en:'Propane tanks'}}
+    {type:'video', src:'video/partiya-3.mp4', poster:'video/partiya-3.jpg', t:{ru:'Крупная партия загружена к отправке', uz:"Katta partiya jo'natishga yuklandi", en:'A large batch loaded for shipping'}},
+    {type:'video', src:'video/yuklash-2.mp4', poster:'video/yuklash-2.jpg', t:{ru:'Погрузка ёмкостей у цеха', uz:'Sex oldida idishlar yuklanmoqda', en:'Loading tanks at the plant'}},
+    {type:'video', src:'video/yashil-4.mp4', poster:'video/yashil-4.jpg', t:{ru:'Зелёные ёмкости в пути к клиенту', uz:"Yashil idishlar mijozga yo'lda", en:'Green tanks on the way to a client'}}
   ];
   var GL = {
     ru:{photo:'Фото', video:'Видео', soonV:'Видео скоро', soonP:'Фото скоро', close:'Закрыть', view:'Просмотр', rows:'Видео'},
@@ -587,7 +585,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   });
   document.getElementById('lb-x').addEventListener('click', function(){ lb.close ? lb.close() : lb.removeAttribute('open'); });
   lb.addEventListener('click', function(e){ if (e.target === lb) lb.close(); });
-  lb.addEventListener('close', function(){ lbm.innerHTML = ''; });
+  lb.addEventListener('close', function(){ if (!lb.open) lbm.innerHTML = ''; });
 
   document.getElementById('yr').textContent = new Date().getFullYear();
   setLang(initialLang(), false);
