@@ -378,6 +378,8 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
 .cert .meta span{font-family:var(--font-data);font-size:11.5px;color:var(--fg-2);letter-spacing:.02em}
 .cert .meta .lvl{color:var(--gold-2)}
 .cert-note{display:flex;gap:10px;align-items:flex-start;color:var(--fg-2);font-size:13.5px;margin-top:26px;max-width:70ch}
+.cert-note+.cert-note{margin-top:10px}
+.cert-note b{color:var(--fg)}
 .cert-note svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--gold)}
 .noshot{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .noshot img{pointer-events:none;-webkit-user-drag:none}
@@ -601,6 +603,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
       <h2 data-i18n="ce.h2" class="h2">Сертификаты <span class="gold-text">национального производителя</span></h2>
       <p data-i18n="ce.lead" class="lead">Наша продукция сертифицирована в Национальной системе сертификации Республики Узбекистан. Нажмите на документ, чтобы посмотреть его полностью.</p>
       <div class="cert-groups noshot" id="certs-root"></div>
+      <p class="cert-note"><svg><use href="#i-cert"/></svg><span data-i18n="ce.brand"><b>TAC Press</b> — торговая марка компании <b>EVROKANAT MCHJ</b>. Поэтому в сертификатах изготовителем указано EVROKANAT MCHJ.</span></p>
       <p class="cert-note"><svg><use href="#i-eye"/></svg><span data-i18n="ce.note">Документы доступны только для просмотра на сайте. Оригиналы и копии предоставляем по запросу.</span></p>
     </div>
   </section>
@@ -741,8 +744,8 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   Object.assign(DICT.uz, {"nav.gallery": "Galereya", "g.eyebrow": "Real foto va videolar", "g.h2": "Zavodimiz va mahsulotlarimiz <span class=\"gold-text\">jonli kadrlarda</span>", "g.lead": "Sexdan haqiqiy kadrlar: payvandlash, bosim sinovlari, tayyor idishlar va mijozlarga jo'natish."});
   Object.assign(DICT.en, {"nav.gallery": "Gallery", "g.eyebrow": "Real photos and video", "g.h2": "Our plant and products, <span class=\"gold-text\">for real</span>", "g.lead": "Genuine footage from the shop floor: welding, pressure testing, finished tanks and shipping to clients."});
 
-  Object.assign(DICT.uz, {"nav.certs": "Sertifikatlar", "ce.eyebrow": "Sertifikatlar", "ce.h2": "Milliy ishlab chiqaruvchi <span class=\"gold-text\">sertifikatlari</span>", "ce.lead": "Mahsulotlarimiz O'zbekiston Respublikasi Milliy sertifikatlashtirish tizimida sertifikatlangan. Hujjatni to'liq ko'rish uchun ustiga bosing.", "ce.note": "Hujjatlar faqat saytda ko'rish uchun. Asl nusxalari va nusxalarini so'rov bo'yicha taqdim etamiz."});
-  Object.assign(DICT.en, {"nav.certs": "Certificates", "ce.eyebrow": "Certificates", "ce.h2": "National producer <span class=\"gold-text\">certificates</span>", "ce.lead": "Our products are certified under the National Certification System of the Republic of Uzbekistan. Tap a document to view it in full.", "ce.note": "Documents are available for viewing on the site only. Originals and copies are provided on request."});
+  Object.assign(DICT.uz, {"nav.certs": "Sertifikatlar", "ce.eyebrow": "Sertifikatlar", "ce.h2": "Milliy ishlab chiqaruvchi <span class=\"gold-text\">sertifikatlari</span>", "ce.lead": "Mahsulotlarimiz O'zbekiston Respublikasi Milliy sertifikatlashtirish tizimida sertifikatlangan. Hujjatni to'liq ko'rish uchun ustiga bosing.", "ce.brand": "<b>TAC Press</b> — <b>EVROKANAT MCHJ</b> kompaniyasining savdo belgisi (brendi). Shu sababli sertifikatlarda ishlab chiqaruvchi sifatida EVROKANAT MCHJ ko'rsatilgan.", "ce.note": "Hujjatlar faqat saytda ko'rish uchun. Asl nusxalari va nusxalarini so'rov bo'yicha taqdim etamiz."});
+  Object.assign(DICT.en, {"nav.certs": "Certificates", "ce.eyebrow": "Certificates", "ce.h2": "National producer <span class=\"gold-text\">certificates</span>", "ce.lead": "Our products are certified under the National Certification System of the Republic of Uzbekistan. Tap a document to view it in full.", "ce.brand": "<b>TAC Press</b> is a brand of <b>EVROKANAT MCHJ</b>, which is why EVROKANAT MCHJ is named as the manufacturer on the certificates.", "ce.note": "Documents are available for viewing on the site only. Originals and copies are provided on request."});
   var S = {
     ru: { title:'TAC Press — промышленные ёмкости и баки', desc:'TAC Press (Turbo Air Compressor) — производство промышленных ёмкостей в Узбекистане: ёмкости для пропана, расширительные баки, буферные ёмкости и воздушные ресиверы.',
       l:'л', m3:'м³', mm:'мм', scale:['Воздушный ресивер','Ёмкость для пропана','Расширительный бак','Буферная ёмкость'],
