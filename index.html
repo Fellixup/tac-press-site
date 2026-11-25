@@ -895,7 +895,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   // ---------- certificates ----------
   // To add a product group: append an entry to CERTS with its own `id`, `icon`, `name` and `kinds`.
   // Pages are pre-rendered, watermarked .webp images in img/cert/<group>/ (no PDFs are published).
-  var CD = 'img/cert/buffer/', CE = 'img/cert/expansion/', CR = 'img/cert/receiver/';
+  var CD = 'img/cert/buffer/', CE = 'img/cert/expansion/', CR = 'img/cert/receiver/', CP = 'img/cert/propane/';
   function localCert(m, no, lvl, dir, date){ dir = dir || CD; return { model:'TAC RB-'+m, no:no+'', lvl:lvl, date:date || '06.08.2026', thumb:dir+'local-rb'+m+'-th.webp', pages:[dir+'local-rb'+m+'.webp'] }; }
   var CERTS = [
     { id:'buffer', icon:'i-buf',
@@ -931,6 +931,19 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
           { no:'UZ.SMT-01-0068-261279', date:'28.08.2026', until:'28.08.2028', models:'PB500 · PB1000 · PB1500 · PB2000 · PB3000', thumb:CR+'conf-261279-1-th.webp', pages:[CR+'conf-261279-1.webp',CR+'conf-261279-2.webp'] },
           { no:'UZ.SMT-01-0068-283482', date:'09.10.2026', until:'09.10.2028', models:'PB5000 · PB10000', thumb:CR+'conf-283482-1-th.webp', pages:[CR+'conf-283482-1.webp'] }
         ]}
+      ]},
+    { id:'propane', icon:'i-flame',
+      name:{ ru:'Ёмкости для пропана', uz:'Propan idishlari', en:'Propane tanks' },
+      sub:{ ru:'резервуары для сжиженного газа (СУГ)', uz:'suyultirilgan gaz (SUG) rezervuarlari', en:'LPG storage tanks' },
+      kinds:[
+        { type:'conf', docs:[
+          { no:'UZ.SMT-01-0068-283484', date:'09.10.2026', until:'09.10.2028', models:{ ru:'15 м³ · одностенный · зав.&nbsp;№&nbsp;26078', uz:'15 m³ · bir devorli · zavod&nbsp;№&nbsp;26078', en:'15 m³ · single-wall · serial&nbsp;№&nbsp;26078' }, thumb:CP+'conf-283484-1-th.webp', pages:[CP+'conf-283484-1.webp'] },
+          { no:'UZ.SMT-01-0068-283483', date:'09.10.2026', until:'09.10.2028', models:{ ru:'15 м³ · двухстенный · зав.&nbsp;№&nbsp;26075, 26076', uz:'15 m³ · ikki devorli · zavod&nbsp;№&nbsp;26075, 26076', en:'15 m³ · double-wall · serial&nbsp;№&nbsp;26075, 26076' }, thumb:CP+'conf-283483-1-th.webp', pages:[CP+'conf-283483-1.webp'] },
+          { no:'UZ.SMT-01-0068-283486', date:'09.10.2026', until:'09.10.2028', models:{ ru:'20 м³ · одностенный · зав.&nbsp;№&nbsp;26077', uz:'20 m³ · bir devorli · zavod&nbsp;№&nbsp;26077', en:'20 m³ · single-wall · serial&nbsp;№&nbsp;26077' }, thumb:CP+'conf-283486-1-th.webp', pages:[CP+'conf-283486-1.webp'] },
+          { no:'UZ.SMT-01-0068-283485', date:'09.10.2026', until:'09.10.2028', models:{ ru:'20 м³ · двухстенный · зав.&nbsp;№&nbsp;26086', uz:'20 m³ · ikki devorli · zavod&nbsp;№&nbsp;26086', en:'20 m³ · double-wall · serial&nbsp;№&nbsp;26086' }, thumb:CP+'conf-283485-1-th.webp', pages:[CP+'conf-283485-1.webp'] },
+          { no:'UZ.SMT-01-0068-283488', date:'09.10.2026', until:'09.10.2028', models:{ ru:'25 м³ · одностенный · зав.&nbsp;№&nbsp;26079', uz:'25 m³ · bir devorli · zavod&nbsp;№&nbsp;26079', en:'25 m³ · single-wall · serial&nbsp;№&nbsp;26079' }, thumb:CP+'conf-283488-1-th.webp', pages:[CP+'conf-283488-1.webp'] },
+          { no:'UZ.SMT-01-0068-283487', date:'09.10.2026', until:'09.10.2028', models:{ ru:'25 м³ · двухстенный · зав.&nbsp;№&nbsp;26082', uz:'25 m³ · ikki devorli · zavod&nbsp;№&nbsp;26082', en:'25 m³ · double-wall · serial&nbsp;№&nbsp;26082' }, thumb:CP+'conf-283487-1-th.webp', pages:[CP+'conf-283487-1.webp'] }
+        ]}
       ]}
   ];
   var CT = {
@@ -943,7 +956,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   function certTitle(k, d){ return k.type === 'local' ? d.model : '№ ' + d.no; }
   function certMeta(k, d){
     var t = cT();
-    return k.type === 'local' ? '№ '+d.no+'<br><span class="lvl">'+t.lvl+' '+d.lvl+'%</span>' : (d.models ? '<span class="lvl">'+d.models+'</span><br>' : '')+t.from+' '+d.date+'<br>'+t.valid+' '+d.until;
+    return k.type === 'local' ? '№ '+d.no+'<br><span class="lvl">'+t.lvl+' '+d.lvl+'%</span>' : (d.models ? '<span class="lvl">'+(typeof d.models === 'string' ? d.models : (d.models[LANG] || d.models.ru))+'</span><br>' : '')+t.from+' '+d.date+'<br>'+t.valid+' '+d.until;
   }
   function renderCerts(){
     var t = cT(), g = CERTS[certCur], h = '';
