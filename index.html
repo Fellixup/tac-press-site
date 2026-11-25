@@ -895,8 +895,8 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   // ---------- certificates ----------
   // To add a product group: append an entry to CERTS with its own `id`, `icon`, `name` and `kinds`.
   // Pages are pre-rendered, watermarked .webp images in img/cert/<group>/ (no PDFs are published).
-  var CD = 'img/cert/buffer/';
-  function localCert(m, no, lvl){ return { model:'TAC RB-'+m, no:no+'', lvl:lvl, date:'06.08.2026', thumb:CD+'local-rb'+m+'-th.webp', pages:[CD+'local-rb'+m+'.webp'] }; }
+  var CD = 'img/cert/buffer/', CE = 'img/cert/expansion/';
+  function localCert(m, no, lvl, dir, date){ dir = dir || CD; return { model:'TAC RB-'+m, no:no+'', lvl:lvl, date:date || '06.08.2026', thumb:dir+'local-rb'+m+'-th.webp', pages:[dir+'local-rb'+m+'.webp'] }; }
   var CERTS = [
     { id:'buffer', icon:'i-buf',
       name:{ ru:'Буферные ёмкости', uz:'Bufer idishlar', en:'Buffer tanks' },
@@ -911,6 +911,16 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
           localCert(600,612052002303,'82.02'), localCert(750,612052002307,'83.14'), localCert(800,612052002308,'83.62'),
           localCert(1000,612052002304,'90.9'), localCert(1500,612052002305,'92.34'), localCert(2000,612052002309,'93.21'),
           localCert(3000,612052002306,'93.26'), localCert(4000,612052002311,'92.07'), localCert(5000,612052002310,'92.33')
+        ]}
+      ]},
+    { id:'expansion', icon:'i-exp',
+      name:{ ru:'Расширительные баки', uz:'Kengaytirish baklari', en:'Expansion tanks' },
+      sub:{ ru:'для систем отопления', uz:'isitish tizimlari uchun', en:'for heating systems' },
+      kinds:[
+        { type:'local', docs:[
+          localCert(500,612052007101,'80.49',CE,'16.11.2026'), localCert(750,612052007102,'73.53',CE,'16.11.2026'),
+          localCert(1000,612052007103,'77.35',CE,'16.11.2026'), localCert(1500,612052007104,'78.04',CE,'16.11.2026'),
+          localCert(2000,612052007105,'80.8',CE,'16.11.2026')
         ]}
       ]}
   ];
