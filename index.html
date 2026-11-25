@@ -353,6 +353,52 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
 .lb-x{position:absolute;right:20px;top:20px;z-index:5;width:42px;height:42px;padding:0;border-radius:50%;background:rgba(4,8,30,.65)}
 .lb-x svg{width:18px;height:18px}
 
+/* ---------- certificates (view-only; pages are pre-rendered, watermarked images) ---------- */
+.cert-groups{margin-top:36px}
+.cert-groups .tabs{margin-bottom:26px}
+.cg-head{display:flex;align-items:center;gap:14px;margin:0 0 22px}
+.cg-head .ico{width:46px;height:46px;flex:none}
+.cg-head h3{font-size:clamp(20px,2.2vw,26px);font-weight:800}
+.cg-head small{display:block;color:var(--fg-2);font-size:14px;font-weight:600;letter-spacing:0;margin-top:2px}
+.cert-kind{margin-top:30px}
+.cert-kind:first-of-type{margin-top:0}
+.cert-kind h4{margin:0 0 14px;font-family:var(--font-data);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-2);font-weight:600}
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
+.cert-grid.lg{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.cert{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:12px;padding:10px 10px 14px;border-radius:var(--r-md);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.cert:hover{transform:translateY(-3px)}
+.cert:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.cert .paper{position:relative;z-index:3;aspect-ratio:1/1.1;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 12px 26px -14px rgba(0,4,30,.8)}
+.cert .paper img{width:100%;height:auto;object-fit:cover;object-position:top}
+.cert .paper::after{content:"";position:absolute;inset:auto 0 0;height:38%;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.95))}
+.cert .zoom{position:absolute;z-index:2;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#1a1330;background:linear-gradient(180deg,#fff0c4 0%,var(--gold) 60%,#c39446 100%);box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
+.cert .zoom svg{width:16px;height:16px}
+.cert .meta{position:relative;z-index:3;padding:0 4px;display:flex;flex-direction:column;gap:2px}
+.cert .meta b{font-size:15px;line-height:1.3}
+.cert .meta span{font-family:var(--font-data);font-size:11.5px;color:var(--fg-2);letter-spacing:.02em}
+.cert .meta .lvl{color:var(--gold-2)}
+.cert-note{display:flex;gap:10px;align-items:flex-start;color:var(--fg-2);font-size:13.5px;margin-top:26px;max-width:70ch}
+.cert-note+.cert-note{margin-top:10px}
+.cert-note b{color:var(--fg)}
+.cert-note svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--gold)}
+.noshot{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.noshot img{pointer-events:none;-webkit-user-drag:none}
+/* viewer */
+.cv{max-width:min(980px,calc(100vw - 24px))}
+.cv .lb-media{background:#fff;overflow:auto;max-height:calc(100vh - 150px);display:block;overscroll-behavior:contain}
+.cv .lb-media img{width:100%;max-width:none;max-height:none;height:auto}
+.cv .shield{position:absolute;inset:0;z-index:2}
+.cv .lb-media .page{position:relative}
+.cv-bar{position:relative;z-index:3;display:flex;align-items:center;gap:10px;padding:12px 6px 4px;flex-wrap:wrap}
+.cv-bar .t{font-weight:700;margin-right:auto;min-width:0}
+.cv-bar .t small{display:block;font-family:var(--font-data);font-weight:500;font-size:12px;color:var(--fg-2)}
+.cv-nav{display:flex;align-items:center;gap:8px;font-family:var(--font-data);font-size:13px;color:var(--fg-2)}
+.cv-nav .btn{width:40px;height:40px;padding:0}
+.cv-nav .btn svg{width:16px;height:16px}
+.cv-nav .btn[disabled]{opacity:.35;pointer-events:none}
+@media (max-width:560px){.cert-grid{grid-template-columns:1fr 1fr;gap:10px}.cert-grid.lg{grid-template-columns:1fr 1fr}.cert{padding:7px 7px 10px;gap:8px}.cert .meta b{font-size:13.5px}.cert .meta span{font-size:10.5px}.cv .lb-media{max-height:calc(100vh - 170px)}}
+@media print{.cert .paper,#cv{display:none !important}}
+
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
   .glass,.btn--glass{background:rgba(22,32,92,.92)}
 }
@@ -380,6 +426,10 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z" fill="currentColor"/></symbol>
 <symbol id="i-video" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/></g></symbol>
 <symbol id="i-photo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5h3l1.6-2.5h6.8L17 7.5h3a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 19.5H4A1.5 1.5 0 0 1 2.5 18V9A1.5 1.5 0 0 1 4 7.5z"/><circle cx="12" cy="13" r="3.6"/></g></symbol>
+<symbol id="i-zoom" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></g></symbol>
+<symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-eye" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></g></symbol>
 <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
 <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="8" width="13" height="13" rx="2.5"/><path d="M16 8V5.5A2.5 2.5 0 0013.5 3h-8A2.5 2.5 0 003 5.5v8A2.5 2.5 0 005.5 16H8"/></g></symbol>
   </defs>
@@ -398,6 +448,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
         <a data-i18n="nav.products" href="#products">Продукция</a>
         <a data-i18n="nav.prices" href="#prices">Цены</a>
         <a data-i18n="nav.why" href="#why">Почему мы</a>
+        <a data-i18n="nav.certs" href="#certs">Сертификаты</a>
         <a data-i18n="nav.quote" href="#quote">Запрос цены</a>
         <a data-i18n="nav.contacts" href="#contacts">Контакты</a>
         <a data-i18n="nav.gallery" href="galereya.html">Галерея</a>
@@ -545,6 +596,18 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
     </div>
   </section>
 
+  <!-- CERTIFICATES -->
+  <section id="certs">
+    <div class="wrap">
+      <span data-i18n="ce.eyebrow" class="eyebrow">Сертификаты</span>
+      <h2 data-i18n="ce.h2" class="h2">Сертификаты <span class="gold-text">национального производителя</span></h2>
+      <p data-i18n="ce.lead" class="lead">Наша продукция сертифицирована в Национальной системе сертификации Республики Узбекистан. Нажмите на документ, чтобы посмотреть его полностью.</p>
+      <div class="cert-groups noshot" id="certs-root"></div>
+      <p class="cert-note"><svg><use href="#i-cert"/></svg><span data-i18n="ce.brand"><b>TAC Press</b> — торговая марка компании <b>EVROKANAT MCHJ</b>. Поэтому в сертификатах изготовителем указано EVROKANAT MCHJ.</span></p>
+      <p class="cert-note"><svg><use href="#i-eye"/></svg><span data-i18n="ce.note">Документы доступны только для просмотра на сайте. Оригиналы и копии предоставляем по запросу.</span></p>
+    </div>
+  </section>
+
   <!-- QUOTE -->
   <section id="quote">
     <div class="wrap quote">
@@ -658,6 +721,17 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   </div>
 </footer>
 
+<dialog class="lb cv noshot" id="cv" aria-labelledby="cv-t">
+  <div class="lb-box glass">
+    <button class="btn btn--glass lb-x" type="button" id="cv-x" aria-label="Закрыть"><svg><use href="#i-x"/></svg></button>
+    <div class="lb-media" id="cv-media"><div class="page"><img id="cv-img" alt="" draggable="false"><div class="shield"></div></div></div>
+    <div class="cv-bar">
+      <div class="t" id="cv-t"></div>
+      <div class="cv-nav" id="cv-nav"><button class="btn btn--glass" type="button" id="cv-prev" aria-label="Назад"><svg><use href="#i-prev"/></svg></button><span id="cv-n"></span><button class="btn btn--glass" type="button" id="cv-next" aria-label="Далее"><svg><use href="#i-next"/></svg></button></div>
+    </div>
+  </div>
+</dialog>
+
 <div class="callbar glass" style="border-radius:0">
   <a class="btn btn--gold" href="tel:+998938181525"><svg><use href="#i-phone"/></svg><span data-i18n="bar.call">Позвонить</span></a>
   <a class="btn btn--glass" href="https://t.me/+998938181525" target="_blank" rel="noopener"><svg><use href="#i-tg"/></svg>Telegram</a>
@@ -670,6 +744,8 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   Object.assign(DICT.uz, {"nav.gallery": "Galereya", "g.eyebrow": "Real foto va videolar", "g.h2": "Zavodimiz va mahsulotlarimiz <span class=\"gold-text\">jonli kadrlarda</span>", "g.lead": "Sexdan haqiqiy kadrlar: payvandlash, bosim sinovlari, tayyor idishlar va mijozlarga jo'natish."});
   Object.assign(DICT.en, {"nav.gallery": "Gallery", "g.eyebrow": "Real photos and video", "g.h2": "Our plant and products, <span class=\"gold-text\">for real</span>", "g.lead": "Genuine footage from the shop floor: welding, pressure testing, finished tanks and shipping to clients."});
 
+  Object.assign(DICT.uz, {"nav.certs": "Sertifikatlar", "ce.eyebrow": "Sertifikatlar", "ce.h2": "Milliy ishlab chiqaruvchi <span class=\"gold-text\">sertifikatlari</span>", "ce.lead": "Mahsulotlarimiz O'zbekiston Respublikasi Milliy sertifikatlashtirish tizimida sertifikatlangan. Hujjatni to'liq ko'rish uchun ustiga bosing.", "ce.brand": "<b>TAC Press</b> — <b>EVROKANAT MCHJ</b> kompaniyasining savdo belgisi (brendi). Shu sababli sertifikatlarda ishlab chiqaruvchi sifatida EVROKANAT MCHJ ko'rsatilgan.", "ce.note": "Hujjatlar faqat saytda ko'rish uchun. Asl nusxalari va nusxalarini so'rov bo'yicha taqdim etamiz."});
+  Object.assign(DICT.en, {"nav.certs": "Certificates", "ce.eyebrow": "Certificates", "ce.h2": "National producer <span class=\"gold-text\">certificates</span>", "ce.lead": "Our products are certified under the National Certification System of the Republic of Uzbekistan. Tap a document to view it in full.", "ce.brand": "<b>TAC Press</b> is a brand of <b>EVROKANAT MCHJ</b>, which is why EVROKANAT MCHJ is named as the manufacturer on the certificates.", "ce.note": "Documents are available for viewing on the site only. Originals and copies are provided on request."});
   var S = {
     ru: { title:'TAC Press — промышленные ёмкости и баки', desc:'TAC Press (Turbo Air Compressor) — производство промышленных ёмкостей в Узбекистане: ёмкости для пропана, расширительные баки, буферные ёмкости и воздушные ресиверы.',
       l:'л', m3:'м³', mm:'мм', scale:['Воздушный ресивер','Ёмкость для пропана','Расширительный бак','Буферная ёмкость'],
@@ -815,6 +891,94 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   });
   document.getElementById('q-copy').addEventListener('click', function(){ copy(document.getElementById('q-text').textContent, this, document.getElementById('q-text')); });
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ---------- certificates ----------
+  // To add a product group: append an entry to CERTS with its own `id`, `icon`, `name` and `kinds`.
+  // Pages are pre-rendered, watermarked .webp images in img/cert/<group>/ (no PDFs are published).
+  var CD = 'img/cert/buffer/';
+  function localCert(m, no, lvl){ return { model:'TAC RB-'+m, no:no+'', lvl:lvl, date:'06.08.2026', thumb:CD+'local-rb'+m+'-th.webp', pages:[CD+'local-rb'+m+'.webp'] }; }
+  var CERTS = [
+    { id:'buffer', icon:'i-buf',
+      name:{ ru:'Буферные ёмкости', uz:'Bufer idishlar', en:'Buffer tanks' },
+      sub:{ ru:'бак-аккумулятор, серия TAC RB', uz:'akkumulyator bak, TAC RB seriyasi', en:'heat accumulator, TAC RB series' },
+      kinds:[
+        { type:'conf', docs:[
+          { no:'UZ.SMT-01-0068-277475', date:'28.09.2026', until:'28.09.2028', thumb:CD+'conf-277475-1-th.webp', pages:[CD+'conf-277475-1.webp',CD+'conf-277475-2.webp',CD+'conf-277475-3.webp'] },
+          { no:'UZ.SMT-01-0068-276668', date:'25.09.2026', until:'25.09.2028', thumb:CD+'conf-276668-1-th.webp', pages:[CD+'conf-276668-1.webp',CD+'conf-276668-2.webp',CD+'conf-276668-3.webp'] }
+        ]},
+        { type:'local', docs:[
+          localCert(300,612052002312,'89.28'), localCert(400,612052002302,'91.73'), localCert(500,612052002301,'91.99'),
+          localCert(600,612052002303,'82.02'), localCert(750,612052002307,'83.14'), localCert(800,612052002308,'83.62'),
+          localCert(1000,612052002304,'90.9'), localCert(1500,612052002305,'92.34'), localCert(2000,612052002309,'93.21'),
+          localCert(3000,612052002306,'93.26'), localCert(4000,612052002311,'92.07'), localCert(5000,612052002310,'92.33')
+        ]}
+      ]}
+  ];
+  var CT = {
+    ru:{ conf:'Сертификаты соответствия', local:'Сертификаты местного производителя', confOne:'Сертификат соответствия', localOne:'Сертификат местного производителя', valid:'действителен до', from:'выдан', lvl:'локализация', page:'стр.', close:'Закрыть', prev:'Назад', next:'Далее' },
+    uz:{ conf:'Muvofiqlik sertifikatlari', local:'Mahalliy ishlab chiqaruvchi sertifikatlari', confOne:'Muvofiqlik sertifikati', localOne:'Mahalliy ishlab chiqaruvchi sertifikati', valid:'amal qiladi:', from:'berilgan:', lvl:'mahalliylashtirish', page:'bet', close:'Yopish', prev:'Orqaga', next:'Oldinga' },
+    en:{ conf:'Certificates of conformity', local:'Local producer certificates', confOne:'Certificate of conformity', localOne:'Local producer certificate', valid:'valid until', from:'issued', lvl:'localization', page:'p.', close:'Close', prev:'Previous', next:'Next' }
+  };
+  var certRoot = document.getElementById('certs-root'), certCur = 0;
+  function cT(){ return CT[LANG] || CT.ru; }
+  function certTitle(k, d){ return k.type === 'local' ? d.model : '№ ' + d.no; }
+  function certMeta(k, d){
+    var t = cT();
+    return k.type === 'local' ? '№ '+d.no+'<br><span class="lvl">'+t.lvl+' '+d.lvl+'%</span>' : t.from+' '+d.date+'<br>'+t.valid+' '+d.until;
+  }
+  function renderCerts(){
+    var t = cT(), g = CERTS[certCur], h = '';
+    if (CERTS.length > 1) h += '<div class="tabs" role="tablist">' + CERTS.map(function(c,i){ return '<button class="tab" role="tab" type="button" data-g="'+i+'" aria-selected="'+(i===certCur)+'">'+(c.name[LANG]||c.name.ru)+'</button>'; }).join('') + '</div>';
+    h += '<div class="cg-head"><span class="ico"><svg><use href="#'+g.icon+'"/></svg></span><h3>'+(g.name[LANG]||g.name.ru)+'<small>'+(g.sub[LANG]||g.sub.ru)+'</small></h3></div>';
+    g.kinds.forEach(function(k, ki){
+      h += '<div class="cert-kind"><h4>'+t[k.type]+' · '+k.docs.length+'</h4><div class="cert-grid'+(k.type==='conf'?' lg':'')+'">';
+      k.docs.forEach(function(d, di){
+        h += '<button class="cert glass" type="button" data-k="'+ki+'" data-d="'+di+'"><span class="paper"><img src="'+d.thumb+'" alt="" loading="lazy" draggable="false"><span class="zoom"><svg><use href="#i-zoom"/></svg></span></span><span class="meta"><b>'+certTitle(k,d)+'</b><span>'+certMeta(k,d)+'</span></span></button>';
+      });
+      h += '</div></div>';
+    });
+    certRoot.innerHTML = h;
+  }
+  certRoot.addEventListener('click', function(e){
+    var tb = e.target.closest('.tab'); if (tb) { certCur = +tb.getAttribute('data-g'); renderCerts(); return; }
+    var c = e.target.closest('.cert'); if (c) openCert(CERTS[certCur].kinds[+c.getAttribute('data-k')], +c.getAttribute('data-d'));
+  });
+  renderCerts(); rerender.push(renderCerts);
+
+  // viewer: one page at a time, never a link to a file
+  var cv = document.getElementById('cv'), cvImg = document.getElementById('cv-img'), cvMedia = document.getElementById('cv-media');
+  var cvDoc = null, cvKind = null, cvPage = 0;
+  function cvShow(){
+    var t = cT(), n = cvDoc.pages.length;
+    cvImg.src = cvDoc.pages[cvPage];
+    cvImg.alt = (cvKind.type === 'local' ? t.localOne : t.confOne) + ' ' + certTitle(cvKind, cvDoc);
+    cvMedia.scrollTop = 0;
+    document.getElementById('cv-t').innerHTML = (cvKind.type === 'local' ? t.localOne : t.confOne) + ' · ' + certTitle(cvKind, cvDoc) + '<small>' + certMeta(cvKind, cvDoc).replace('<br>',' · ').replace(/<[^>]+>/g,'') + '</small>';
+    document.getElementById('cv-nav').hidden = n < 2;
+    document.getElementById('cv-n').textContent = t.page + ' ' + (cvPage+1) + ' / ' + n;
+    document.getElementById('cv-prev').disabled = cvPage === 0;
+    document.getElementById('cv-next').disabled = cvPage === n-1;
+    document.getElementById('cv-x').setAttribute('aria-label', t.close);
+    document.getElementById('cv-prev').setAttribute('aria-label', t.prev);
+    document.getElementById('cv-next').setAttribute('aria-label', t.next);
+  }
+  function openCert(k, di){ cvKind = k; cvDoc = k.docs[di]; cvPage = 0; cvShow(); if (cv.showModal) cv.showModal(); else cv.setAttribute('open',''); }
+  function cvGo(d){ var n = cvPage + d; if (cvDoc && n >= 0 && n < cvDoc.pages.length) { cvPage = n; cvShow(); } }
+  document.getElementById('cv-prev').addEventListener('click', function(){ cvGo(-1); });
+  document.getElementById('cv-next').addEventListener('click', function(){ cvGo(1); });
+  document.getElementById('cv-x').addEventListener('click', function(){ cv.close(); });
+  cv.addEventListener('click', function(e){ if (e.target === cv) cv.close(); });
+  cv.addEventListener('close', function(){ cvImg.removeAttribute('src'); });
+  cv.addEventListener('keydown', function(e){ if (e.key === 'ArrowLeft') cvGo(-1); else if (e.key === 'ArrowRight') cvGo(1); });
+  // deterrents only: block the context menu, dragging and Ctrl+S/Ctrl+P while certificates are on screen
+  [certRoot, cv].forEach(function(el){
+    el.addEventListener('contextmenu', function(e){ e.preventDefault(); });
+    el.addEventListener('dragstart', function(e){ e.preventDefault(); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (cv.open && (e.ctrlKey || e.metaKey) && /^[sp]$/i.test(e.key)) e.preventDefault();
+  });
+
   setLang(initialLang(), false);
 })();
 </script>
