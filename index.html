@@ -895,7 +895,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   // ---------- certificates ----------
   // To add a product group: append an entry to CERTS with its own `id`, `icon`, `name` and `kinds`.
   // Pages are pre-rendered, watermarked .webp images in img/cert/<group>/ (no PDFs are published).
-  var CD = 'img/cert/buffer/', CE = 'img/cert/expansion/';
+  var CD = 'img/cert/buffer/', CE = 'img/cert/expansion/', CR = 'img/cert/receiver/';
   function localCert(m, no, lvl, dir, date){ dir = dir || CD; return { model:'TAC RB-'+m, no:no+'', lvl:lvl, date:date || '06.08.2026', thumb:dir+'local-rb'+m+'-th.webp', pages:[dir+'local-rb'+m+'.webp'] }; }
   var CERTS = [
     { id:'buffer', icon:'i-buf',
@@ -922,6 +922,15 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
           localCert(1000,612052007103,'77.35',CE,'16.11.2026'), localCert(1500,612052007104,'78.04',CE,'16.11.2026'),
           localCert(2000,612052007105,'80.8',CE,'16.11.2026')
         ]}
+      ]},
+    { id:'receiver', icon:'i-gauge',
+      name:{ ru:'Воздушные ресиверы', uz:'Havo resiverlari', en:'Air receivers' },
+      sub:{ ru:'сосуды, работающие под давлением', uz:'bosim ostida ishlaydigan idishlar', en:'pressure vessels' },
+      kinds:[
+        { type:'conf', docs:[
+          { no:'UZ.SMT-01-0068-261279', date:'28.08.2026', until:'28.08.2028', models:'PB500 · PB1000 · PB1500 · PB2000 · PB3000', thumb:CR+'conf-261279-1-th.webp', pages:[CR+'conf-261279-1.webp',CR+'conf-261279-2.webp'] },
+          { no:'UZ.SMT-01-0068-283482', date:'09.10.2026', until:'09.10.2028', models:'PB5000 · PB10000', thumb:CR+'conf-283482-1-th.webp', pages:[CR+'conf-283482-1.webp'] }
+        ]}
       ]}
   ];
   var CT = {
@@ -934,7 +943,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
   function certTitle(k, d){ return k.type === 'local' ? d.model : '№ ' + d.no; }
   function certMeta(k, d){
     var t = cT();
-    return k.type === 'local' ? '№ '+d.no+'<br><span class="lvl">'+t.lvl+' '+d.lvl+'%</span>' : t.from+' '+d.date+'<br>'+t.valid+' '+d.until;
+    return k.type === 'local' ? '№ '+d.no+'<br><span class="lvl">'+t.lvl+' '+d.lvl+'%</span>' : (d.models ? '<span class="lvl">'+d.models+'</span><br>' : '')+t.from+' '+d.date+'<br>'+t.valid+' '+d.until;
   }
   function renderCerts(){
     var t = cT(), g = CERTS[certCur], h = '';
@@ -963,7 +972,7 @@ footer .bar{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;a
     cvImg.src = cvDoc.pages[cvPage];
     cvImg.alt = (cvKind.type === 'local' ? t.localOne : t.confOne) + ' ' + certTitle(cvKind, cvDoc);
     cvMedia.scrollTop = 0;
-    document.getElementById('cv-t').innerHTML = (cvKind.type === 'local' ? t.localOne : t.confOne) + ' · ' + certTitle(cvKind, cvDoc) + '<small>' + certMeta(cvKind, cvDoc).replace('<br>',' · ').replace(/<[^>]+>/g,'') + '</small>';
+    document.getElementById('cv-t').innerHTML = (cvKind.type === 'local' ? t.localOne : t.confOne) + ' · ' + certTitle(cvKind, cvDoc) + '<small>' + certMeta(cvKind, cvDoc).split('<br>').join(' · ').replace(/<[^>]+>/g,'') + '</small>';
     document.getElementById('cv-nav').hidden = n < 2;
     document.getElementById('cv-n').textContent = t.page + ' ' + (cvPage+1) + ' / ' + n;
     document.getElementById('cv-prev').disabled = cvPage === 0;
