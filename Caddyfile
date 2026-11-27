@@ -1,0 +1,22 @@
+{
+	admin off
+	auto_https off
+}
+
+:{$PORT:8080} {
+	root * /srv
+	encode zstd gzip
+
+	header {
+		# Brauzer saytni faqat HTTPS orqali ochsin (1 yil)
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		# Sahifadagi tasodifiy http:// havolalarni avtomatik https ga o'tkazish
+		Content-Security-Policy "upgrade-insecure-requests"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	file_server
+}

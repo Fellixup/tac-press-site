@@ -7,6 +7,6 @@
 - Сертификаты (секция `#certs` в `index.html`): страницы PDF заранее отрендерены в водяные webp в `img/cert/<группа>/`, список в массиве `CERTS`. Сами PDF в репозиторий не кладём.
 - `galereya.html` — отдельная страница галереи (2 ряда видео в формате reels), список файлов в массиве `MEDIA`
 - `video/` — реальные видео для галереи
-- `Dockerfile` — раздача через Caddy на порту `$PORT` (Railway)
+- `Dockerfile` + `Caddyfile` — раздача через Caddy на порту `$PORT` (Railway); в `Caddyfile` заголовки безопасности (HSTS и др.). Все ссылки и ресурсы — только `https://` или относительные.
 
 Локально: `python3 -m http.server` и открыть http://localhost:8000
